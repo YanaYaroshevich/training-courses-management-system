@@ -156,11 +156,11 @@
                             <div class="form-group">
                                 <label>Training description</label>
                                 <p>Some sentenses about your training</p>
-                                <textarea class="form-control" rows="5"></textarea>
+                                <textarea class="form-control" rows="5" placeholder="Key concepts, Language design, Use of assembly language"></textarea>
                             </div>
 
                             <div>
-                            	<label>Tags</label>
+                            	<label>Tags *</label>
                             	<p>
                             		Choose some key words connected to your taining 
                             		<small>
@@ -178,7 +178,7 @@
 							</div>
 
 							<div>
-								<label>Choose the audience for your training</label>
+								<label>Choose the audience for your training *</label>
 								<select multiple class="form-control">
 									<option>All staff</option>
 							        <option>Java</option>
@@ -187,6 +187,7 @@
 							    </select>
 						    </div>
 
+
                             <div class="form-group">
                                 <label>Information about training</label>
                                 <input type="file">
@@ -194,8 +195,17 @@
 
                    			
 
-
-
+                            <div>
+	                            <label>Choose the date</label>
+	                            <form>
+	   								<input type="date" name="calendar">
+	   					  		</form>
+	   					  	</div>
+<form>
+   <p>В какое время запускать Cron?</p>
+   <p><input type="time" name="cron" value="03:15" min="00:01" max="06:00"></p>
+   <p><input type="submit"></p>
+  </form>
 
 
                             <div class="form-group">
