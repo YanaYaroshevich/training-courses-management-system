@@ -305,3 +305,7 @@ ul.alert-dropdown {
 .panel-yellow > a:hover {
     color: #df8a13;
 }
+#search-select {
+	padding-right: 0;
+	margin-bottom: 15px;
+}
