@@ -42,7 +42,7 @@ html {
 }
 
 #top-menu {
-    opacity: 0.9;
+    
     box-shadow: 0px 2px 14px 2px #0f2736;
     background-color: #1A394C;
 }
@@ -216,6 +216,10 @@ ul.alert-dropdown {
     #copyright {
         display: block;
     }
+	
+	#top-menu {
+		opacity: 0.9;
+	}
 }
 
 .side-nav>li>ul {
