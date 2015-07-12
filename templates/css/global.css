@@ -7,6 +7,11 @@ body {
     font-size: 15px;
 }
 
+#subBtn {
+    width: 60%;
+    height: 60px;
+}
+
 #audience, #tags, #lng{
     list-style-type:none;
     max-height: 100px;
