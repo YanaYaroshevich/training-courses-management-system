@@ -7,6 +7,14 @@ body {
     font-size: 15px;
 }
 
+#audience, #tags, #lng{
+    list-style-type:none;
+    max-height: 100px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-left: 0;
+}
+
 html {
     height: 100%;
     background-color: white;
@@ -322,8 +330,4 @@ ul.alert-dropdown {
 
 .search-row {
 	margin-bottom: 15px;
-}
-
-.tag-column {
-		
 }
