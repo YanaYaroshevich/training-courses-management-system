@@ -311,10 +311,19 @@ ul.alert-dropdown {
 }
 #search-select {
 	padding-right: 0;
-	margin-bottom: 15px;
 }
 
 .tags {
 	font-size: initial;
 	margin-right: 5px;
+	margin-bottom: 5px;
+	display: inline-block;
+}
+
+.search-row {
+	margin-bottom: 15px;
+}
+
+.tag-column {
+		
 }
