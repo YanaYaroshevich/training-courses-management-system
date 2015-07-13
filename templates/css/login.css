@@ -7,6 +7,11 @@
     min-height: 230px;
 }
 
+#alertLog {
+    padding: 4px;
+    margin-bottom: 5px;
+}
+
 #top-menu {
     opacity: 0.9;
     box-shadow: 0px 2px 14px 2px #0f2736;
