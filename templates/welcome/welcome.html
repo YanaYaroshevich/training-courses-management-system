@@ -56,7 +56,7 @@
 					</li>
 
 					<li class="active">
-						<a href="login.html">
+						<a href="../login.html">
 							<i class="fa fa-fw fa-power-off"></i> 
 							Log Out
 						</a>
@@ -71,8 +71,9 @@
 				<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
 				<div class="collapse navbar-collapse" collapse="isCollapsed">
 					<ul class="nav navbar-nav side-nav" id = "left-menu">
+
 						<li id = "alltrainings">
-							<a href="alltrainings.html">
+							<a href="../alltrainings.html">
 								<i class="fa fa-fw fa-circle-o"></i> 
 								All trainings
 							</a>
@@ -87,14 +88,14 @@
 
 							<ul id="demo" collapse="isCollapsed2">
 								<li>
-									<a href="mytrainings.html">
+									<a href="../mytrainings.html">
 										<i class="fa fa-fw fa-angle-right"></i>
 										As a trainer
 									</a>
 								</li>
 
 								<li>
-									<a href="mytrainings.html">
+									<a href="../mytrainings.html">
 										<i class="fa fa-fw fa-angle-right"></i>
 										As a guest
 									</a>
@@ -103,21 +104,21 @@
 						</li>
 
 						<li id = "newtraining">
-							<a href="newtraining.html">
+							<a href="../newtraining.html">
 								<i class="fa fa-fw fa-circle-o"></i> 
 								Create new training
 							</a>
 						</li>
 
 						<li id = "newtrainer">
-							<a href="newtrainer.html">
+							<a href="../newtrainer.html">
 								<i class="fa fa-fw fa-circle-o"></i> 
 								Add new external trainer
 							</a>
 						</li>
 
 						<li id = "users">
-							<a href="users.html">
+							<a href="../users.html">
 								<i class="fa fa-fw fa-circle-o"></i> 
 								Users
 							</a>
@@ -160,7 +161,7 @@
 											</div>
 										</div>
 									</div>
-									<a href="../alltrainings.html">
+									<a href="{{square.link}}">
 										<div class="panel-footer">
 											<span class="pull-left">View Details</span>
 											<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -173,9 +174,9 @@
 					</div>
 					<!-- /.row -->
 
-					<div class="row">
+					<div class="row" ng-controller="alertCtrl">
 						<div class="col-lg-12">
-							<div ng-controller="alertCtrl">
+							<div>
   								<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">
   									<p ng-bind-html="messages[$index]"></p>
   								</alert>
