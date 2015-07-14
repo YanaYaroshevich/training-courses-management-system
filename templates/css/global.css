@@ -114,6 +114,9 @@ html {
 	border-left: 1px solid #ddd;
 	border-bottom: 1px solid #ddd;
 	border-radius: 0 0 4px 4px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
 }
 
 /* Top Navigation */
