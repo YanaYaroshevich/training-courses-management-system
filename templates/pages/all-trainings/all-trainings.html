@@ -6,24 +6,32 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 		<meta name="description" content=""></meta>
 		<meta name="author" content=""></meta>
-        <link rel="shortcut icon" href="../pics/favicon.gif"></link>
+        <link rel="shortcut icon" href="../../resourses/pics/favicon.gif"></link>
 
 		<title>All trainings page</title>
 		
 		<!-- Bootstrap Core CSS -->
-		<link href="../css/bootstrap.css" rel="stylesheet"></link>
+		<link href="../../resourses/css/bootstrap.css" rel="stylesheet"></link>
 
 		<!-- Custom CSS -->
-		<link href="../css/global.css" rel="stylesheet"></link>
+		<link href="../../resourses/css/global.css" rel="stylesheet"></link>
 
 		<!-- Morris Charts CSS -->
-		<link href="../css/plugins/morris.css" rel="stylesheet"></link>
+		<link href="../../resourses/css/plugins/morris.css" rel="stylesheet"></link>
 
 		<!-- Custom Fonts -->
-		<link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"></link>
+		<link href="../../resourses/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"></link>
 		
         <!-- UI Grid CSS -->
-		<script src="../css/ui-grid.css"></script>
+		<link href="../../resourses/css/ui-grid.css" rel="stylesheet"></link>
+		
+        <!-- Angular -->
+		<script src="../../resourses/js/angular.js"></script>
+		<script src="../../resourses/js/ui-grid.js"></script>
+		<script src="all-trainings-app/app.js"></script>
+		<script src="../global-ctrls/collapse-ctrl.js"></script>
+		<script src="all-trainings-app/tabs-ctrl.js"></script>
+		<script src="../../resourses/js/ui-bootstrap-tpls-0.12.1.js"></script>
 	</head>
 
 	<body>
@@ -39,7 +47,7 @@
 					</button>
 
 					<a class="navbar-brand" href="../welcome/welcome.html">
-                        <img alt="Brand" src="../pics/exadel-logo.png"></img>
+                        <img alt="Brand" src="../../resourses/pics/exadel-logo.png"></img>
 					</a>
 				</div>
 
@@ -49,20 +57,20 @@
 					<li class="active">   
 						<a href = "../welcome/welcome.html">      
 							<i class = "fa fa-fw fa-user"></i>
-							userName  
+							User Name  
 						</a>     
 					</li>
 
 					<li class="active">
-						<a href="login.html">
+						<a href="../login/login.html">
 							<i class="fa fa-fw fa-power-off"></i> 
-							Log Out
+							Log out
 						</a>
 					</li>
 
 					<ul class="nav navbar-right top-nav language-panel">
-						<li><a id = "langEn" href = "../welcome/welcome.html">En</a></li>
-						<li><a id = "langRu" href = "../welcome/welcome.html">Ru</a></li>
+						<li><a class="lang" href = "all-trainings.html">En</a></li>
+						<li><a class="lang" href = "all-trainings.html">Ru</a></li>
                 	</ul>
 				</ul>
 
@@ -70,26 +78,26 @@
 				<div class="collapse navbar-collapse" collapse="isCollapsed">
 					<ul class="nav navbar-nav side-nav" id = "left-menu">
 						<li id = "alltrainings">
-							<a href="alltrainings.html">
-								<i class="fa fa-fw fa-circle-o"></i> 
+							<a href="all-trainings.html">
+								<i class="fa fa-fw fa-circle"></i> 
 								All trainings
 							</a>
 						</li>
 						<li id = "mytrainings">
-							<a href="javascript:;" ng-click="isCollapsed2=!isCollapsed2">
-								<i class="fa fa-fw fa-circle-o"></i> 
+							<a href="#" ng-click="isCollapsed2=!isCollapsed2">
+								<i class="fa fa-fw fa-circle"></i> 
 								My trainings 
 								<i class="fa fa-fw fa-caret-down"></i>
 							</a>
-							<ul id="demo" collapse="isCollapsed2">
+							<ul collapse="isCollapsed2">
 								<li>
-									<a href="mytrainings.html">
+									<a href="../my-trainings/my-trainings.html">
 										<i class="fa fa-fw fa-angle-right"></i>
 										As a trainer
 									</a>
 								</li>
 								<li>
-									<a href="mytrainings.html">
+									<a href="../my-trainings/my-trainings.html">
 										<i class="fa fa-fw fa-angle-right"></i>
 										As a guest
 									</a>
@@ -97,20 +105,20 @@
 							</ul>
 						</li>
 						<li id = "newtraining">
-							<a href="newtraining.html">
-								<i class="fa fa-fw fa-circle-o"></i> 
+							<a href="../new-training/new-training.html">
+								<i class="fa fa-fw fa-circle"></i> 
 								Create new training
 							</a>
 						</li>
 						<li id = "newtrainer">
-							<a href="newtrainer.html">
-								<i class="fa fa-fw fa-circle-o"></i> 
+							<a href="../new-trainer/new-trainer.html">
+								<i class="fa fa-fw fa-circle"></i> 
 								Add new external trainer
 							</a>
 						</li>
 						<li id = "users">
-							<a href="users.html">
-								<i class="fa fa-fw fa-circle-o"></i> 
+							<a href="../users/users.html">
+								<i class="fa fa-fw fa-circle"></i> 
 								Users
 							</a>
 						</li>
@@ -226,7 +234,7 @@
 												</thead>
 												<tbody>
 													<tr>
-														<td><a href="training.html">JavaScript frameworks: Angular.js. How it works?</a></td>
+														<td><a href="#">JavaScript frameworks: Angular.js. How it works?</a></td>
 														<td>2777775 May 2015</td>
 														<td>Unit 243</td>
 														<td>Shchaurouski Slava</td>
@@ -364,13 +372,5 @@
 			<!-- /#page-wrapper -->
 		</div>
 		<!-- /#wrapper -->
-		
-        <!-- Angular -->
-		<script src="../js/angular.js"></script>
-		<script src="../js/ui-grid.js"></script>
-		<script src="app.js"></script>
-		<script src="../global/collapseCtrl.js"></script>
-		<script src="../allTrainings/tabs-ctrl.js"></script>
-		<script src="../js/ui-bootstrap-tpls-0.12.1.js"></script>
 	</body>
 </html>
