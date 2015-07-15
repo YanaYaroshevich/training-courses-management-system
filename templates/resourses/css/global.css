@@ -128,11 +128,7 @@ html {
 
 /* Top Navigation */
 
-#langRu {
-    padding 15px;
-}
-
-#langEn {
+.lang {
     padding 15px;
 }
 
