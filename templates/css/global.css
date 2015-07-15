@@ -17,12 +17,19 @@ body {
     height: 60px;
 }
 
-#audience, #tags, #lng{
+#lng {
+    list-style-type:none;
+    padding-left: 0;
+}
+
+#audience, #tags{
     list-style-type:none;
     max-height: 100px;
     overflow-x: hidden;
     overflow-y: scroll;
     padding-left: 0;
+    border-style: dotted;
+    border-width: 1px;
 }
 
 html {
