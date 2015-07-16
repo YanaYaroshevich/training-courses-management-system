@@ -9,8 +9,7 @@ alertCtrl.controller('alertCtrl', ['$scope', '$sce', function($scope, $sce){
   	];
 
   $scope.messages = $scope.alerts.map(function(alert) {
-  	var s = '<i class="fa fa-info-circle"></i> ';
-  	s += '<strong><time>' + alert.time + '</time></strong>' + alert.msg;
+  	var s = '<b><time>' + alert.time + '</time></b>' + alert.msg;
   	if (alert.type == 'warning'){
   		s = s.replace('$$userName$$', '<a href="' + alert.userLink + '"class="alert-link">' + alert.userName + '</a>');
   	}
