@@ -1,6 +1,6 @@
 var mainCtrl = angular.module('mainCtrl', []);
 
-mainCtrl.controller('mainCtrl', ['$scope', /*'$modal',*/ function($scope, /*$modal, */moment) {
+mainCtrl.controller('mainCtrl', ['$scope', function($scope, moment) {
     var vm = this;
     
     vm.calendarDay = new Date();
@@ -11,52 +11,56 @@ mainCtrl.controller('mainCtrl', ['$scope', /*'$modal',*/ function($scope, /*$mod
             type: 'warning',
             startsAt: new Date(2015,6,1,14),
             endsAt: new Date(2015,6,5,16),
-            draggable: true,
-            resizable: true
+            editable: true,
+            deletable: true,
+            draggable: false,
+            resizable: true,
+            //recusOn: 'month',
+            //cssClass: 'css-class'            
         }, {
-            title: '<i class="glyphicon glyphicon-asterisk"></i> <span class="text-primary">Another event</span>, with a <i>html</i> title',
+            title: 'Back-end',
             type: 'info',
             startsAt: new Date(2015,6,2,13),
             endsAt: new Date(2015,6,6,14),
-            draggable: true,
-            resizable: true
+            editable: true,
+            deletable: true,
+            draggable: false,
+            resizable: true,
+            //recusOn: 'month',
+            //cssClass: 'css-class'
         }, {
-            title: 'This is a really long event title that occurs on every year',
+            title: 'SQL',
             type: 'important',
             startsAt: new Date(2015,6,3,12),
             endsAt: new Date(2015,6,7,13),
-            recursOn: 'year',
-            draggable: true,
-            resizable: true
+            editable: true,
+            deletable: true,
+            draggable: false,
+            resizable: true,
+            //recusOn: 'month',
+            //cssClass: 'css-class'
         }
     ];
-    
-    /*function showModal(action, event) {
-        $modal.open({
-            templateUrl: 'calendar.html',
-            controller: function() {
-                var vm = this;
-                vm.action = action;
-                vm.event = event;
-            },
-            controllerAs: 'vm'
-        });
-    }*/
+
     
     vm.eventClicked = function(event) {
-        //showModal('Clicked', event);
+        
     };
 
     vm.eventEdited = function(event) {
-        //showModal('Edited', event);
+        
     };
 
     vm.eventDeleted = function(event) {
-        vm.events.splice(event, 1);
+        var answer = confirm("Do you really want delete this training?");
+        
+        if (answer) {
+            vm.events.splice(event, 1);
+        }
     };
 
     vm.eventTimesChanged = function(event) {
-        //showModal('Dropped or resized', event);
+        
     };
 
     vm.toggle = function($event, field, event) {

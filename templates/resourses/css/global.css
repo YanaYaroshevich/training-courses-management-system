@@ -365,3 +365,7 @@ ul.alert-dropdown {
 .calendar-icons {
     color: white;
 }
+.calendar-title {
+    margin-bottom: 0px;
+    margin-top: 0px;
+}

@@ -501,8 +501,8 @@ span[data-cal-date]:hover {
   padding: 20px;
   color: #ffffff;
   background-color: #314D5E;
-  -webkit-box-shadow: inset 0px 0px 15px 0px rgba(0, 0, 0, 0.5);
-  box-shadow: inset 0px 0px 15px 0px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset 0px 0px 15px 0px rgba(15, 39, 54, 0.8);
+  box-shadow: inset 0px 0px 15px 0px rgba(15, 39, 54, 0.8);
 }
 .cal-slide-content a.event-item {
   color: #ffffff;
@@ -530,7 +530,7 @@ a.cal-event-week {
   color: #151515;
 }
 .badge-important {
-  background-color: #b94a48;
+  background-color: #314D5E;
 }
 .pointer {
   cursor: pointer;
