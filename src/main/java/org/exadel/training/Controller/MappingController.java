@@ -1,4 +1,4 @@
-package org.exadel.training.Controller;
+package org.exadel.training.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +19,11 @@ public class MappingController {
     @RequestMapping("/login")
     public String login() {
         return "login";
+    }
+
+    @RequestMapping("/du")
+    public String upload() {
+        return "du";
     }
 
     @RequestMapping("/login-error")

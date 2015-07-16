@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title>Upload File Request Page</title>
+</head>
+<body>
+
+<form method="POST" action="uploadFile" enctype="multipart/form-data">File to upload:
+	<br />
+	<input type="file" name="file"/>
+	<br />Name:
+	<input type="submit" value="Upload"/> Press here to upload the file!
+</form>
+
+<form method="GET" action="downloadFile">File to download:
+	<br />
+	<input type="file" name="file"/>
+	<br />Name:
+	<input type="submit" value="Submit"/> Press here to download the file!
+</form>
+
+</body>
+</html>
