@@ -52,15 +52,15 @@
 					</li>
 
 					<li class="active">
-						<a href="#">
+						<a href="../login/login.html">
 							<i class="fa fa-fw fa-power-off"></i> 
 							Log out
 						</a>
 					</li>
 
 					<ul class="nav navbar-right top-nav language-panel">
-						<li><a id = "langEn" href = "../welcome/welcome.html">En</a></li>
-						<li><a id = "langRu" href = "../welcome/welcome.html">Ru</a></li>
+						<li><a class = "lang" href = "new-training.html">En</a></li>
+						<li><a class= "lang" href = "new-training.html">Ru</a></li>
                 	</ul>
 				</ul>
 
@@ -69,29 +69,29 @@
 					<ul class="nav navbar-nav side-nav" id = "left-menu">
 
 						<li id = "alltrainings">
-							<a href="../alltrainings.html">
-								<i class="fa fa-fw fa-circle-o"></i> 
+							<a href="../all-trainings/all-trainings.html">
+								<i class="fa fa-fw fa-circle"></i> 
 								All trainings
 							</a>
 						</li>
 
 						<li id="mytrainings">
-							<a href="javascript:;" ng-click="isCollapsed2=!isCollapsed2">
-								<i class="fa fa-fw fa-circle-o"></i> 
+							<a href="#" ng-click="isCollapsed2=!isCollapsed2">
+								<i class="fa fa-fw fa-circle"></i> 
 								My trainings 
 								<i class="fa fa-fw fa-caret-down"></i>
 							</a>
 
-							<ul id="demo" collapse="isCollapsed2">
+							<ul collapse="isCollapsed2">
 								<li>
-									<a href="../mytrainings.html">
+									<a href="../my-trainings/my-trainings.html">
 										<i class="fa fa-fw fa-angle-right"></i>
 										As a trainer
 									</a>
 								</li>
 
 								<li>
-									<a href="../mytrainings.html">
+									<a href="../my-trainings/my-trainings.html">
 										<i class="fa fa-fw fa-angle-right"></i>
 										As a guest
 									</a>
@@ -100,22 +100,22 @@
 						</li>
 
 						<li id = "newtraining">
-							<a href="newtraining.html">
-								<i class="fa fa-fw fa-circle-o"></i> 
+							<a href="new-training.html">
+								<i class="fa fa-fw fa-circle"></i> 
 								Create new training
 							</a>
 						</li>
 
 						<li id = "newtrainer">
-							<a href="../newtrainer.html">
-								<i class="fa fa-fw fa-circle-o"></i> 
+							<a href="../new-trainer/new-trainer.html">
+								<i class="fa fa-fw fa-circle"></i> 
 								Add new external trainer
 							</a>
 						</li>
 
 						<li id = "users">
-							<a href="../users.html">
-								<i class="fa fa-fw fa-circle-o"></i> 
+							<a href="../users/users.html">
+								<i class="fa fa-fw fa-circle"></i> 
 								Users
 							</a>
 						</li>
@@ -134,7 +134,7 @@
 	                <!-- Page Heading -->
 
 	                <div class="row">
-	                    <div class="col-lg-12">
+	                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 	                        <h1 class="page-header">
 	                            New training creation <small>Fill some fields</small>
 	                        </h1>
@@ -145,14 +145,14 @@
     				<pager total-items="totalItems" ng-model="currentPage"></pager>
 
 	                <div class="row">
-	                    <div class="col-lg-6 col-lg-offset-3">
+	                    <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
 
 		                    <div id="step1" ng-show="currentPage == 1">
 		                        <div class="form-group">
 	                                <label>
 	                                	Name of training *
 	                                </label>
-	                                <input class="form-control" placeholder="Assembler for beginners">
+	                                <input class="form-control" placeholder="Assembler for beginners" required="required">
 	                            </div>
 
 	                            <div class="form-group">
@@ -174,50 +174,59 @@
 									<ul id = "tags">
 										<li>
 											<input type="checkbox">
-											#Java
+												#Java
+											</input>
 										</li>
 										<li>
 											<input type="checkbox">
-											#PHP
+												#PHP
+											</input>
 										</li>
 										<li>
 											<input type="checkbox">
-											#JavaScript
+												#JavaScript
+											</input>
 										</li>
 										<li>
 											<input type="checkbox">
-											#C++
+												#C++
+											</input>
 										</li>
 										<li>
 											<input type="checkbox">
-											#Scala
+												#Scala
+											</input>
 										</li>
 										<li>
 											<input type="checkbox">
-											#Go
+												#Go
+											</input>
 										</li>
 										<li>
 											<input type="checkbox">
-											#English
+												#English
+											</input>
 										</li>
 									</ul>
 							    </div>
 
 							    <div>
-									<label>Choose the audience for your training *</label>
+									<label>Audience for your training *</label>
 									<div>
 										<span>
 											<input type="checkbox">
-											Select all&nbsp&nbsp&nbsp    
+												Select all&nbsp&nbsp&nbsp
+											</input>
 										</span>
 
 										<span>
 											<input type="checkbox">
-											Deselect all
+												Deselect all
+											</input>
 										</span>
 									</div>
 									<div class="input-group">
-	                                    <input type="text" class="form-control" placeholder="Type here">
+	                                    <input type="text" class="form-control" placeholder="Type here"></input>
 	                                    <span class="input-group-btn">
 	        								<button class="btn btn-primary" type="button">Search</button>
 	      								</span>
@@ -225,27 +234,33 @@
 									<ul id = "audience">
 										<li>
 											<input type="checkbox">
-											Java
+												Java
+											</input>
 										</li>
 										<li>
 											<input type="checkbox">
-											PHP
+												PHP
+											</input>
 										</li>
 										<li>
 											<input type="checkbox">
-											JavaScript
+												JavaScript
+											</input>
 										</li>
 										<li>
 											<input type="checkbox">
-											C++
+												C++
+											</input>
 										</li>
 										<li>
 											<input type="checkbox">
-											Scala
+												Scala
+											</input>
 										</li>
 										<li>
 											<input type="checkbox">
-											Go
+												Go
+											</input>
 										</li>
 									</ul>
 							    </div>
@@ -254,7 +269,7 @@
 							<div id="step3" ng-show="currentPage == 3">
 	             		
 			                    <div class="form-group">
-			                    	<label>Choose the type of your training *</label>
+			                    	<label>Type of your training *</label>
 			                    	<div class="dropdown">
 								  		<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 								    		Type
@@ -268,7 +283,7 @@
 								</div>
 
 								<div class="form-group">
-			                    	<label>Choose the repetition frequency of your training *</label>
+			                    	<label>Repetition frequency of your training *</label>
 			                    	<div class="dropdown">
 								  		<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 								    		Repetition
@@ -277,65 +292,40 @@
 									  	<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 									    	<li><a href="#">One-off</a></li>
 									    	<li><a href="#">Continuous</a></li>
-									    	<li><a href="#">Weekly</a></li>
 									  </ul>
 									</div>
 								</div>
 
 								<div>
-									<label>Enter the maximum number of guests</label>
+									<label>Maximum number of guests</label>
 									<input type="text" class="form-control" placeholder="Type here">
 								</div>
 
-		                        <div>
-		                        	<label>Enter the room for training</label>
+								<!-- Admin staff -->
+		                        <div> 
+		                        	<label>Enter the room for training *</label>
 		                        	<input type="text" class="form-control" placeholder="Type here">
 		                        </div>
 
 		                        <div>
-									<label>Choose the language of your training *</label>
+									<label>Language of your training *</label>
 										<ul id = "lng">
 											<li>
 												<input type="checkbox">
-												English
+													English
+												</input>
 											</li>
 											<li>
 												<input type="checkbox">
-												Russian
+													Russian
+												</input>
 											</li>
 										</ul>
 								    </div>
-
-
-							    <!--<div class="form-group">
-		                            <label>Information about training</label>
-		                            <input type="file">
-		                        </div>-->
-
 		                        <div align="center">
 	                				<button class="btn btn-primary" type="button" id="subBtn">Submit</button>
 	                			</div>
 		                    </div>
-
-	                       	
-
-						    <!-- TODO Date and time 
-
-						    <div>
-	                            <label>Choose the date *</label>
-	                            <form>
-	   								<input type="date" name="calendar">
-	   					  		</form>
-	   					  	</div>
-							
-							<div>
-	                            <label>Choose the time *</label>
-								<form>
-	   								<p><input type="time" min="08:00" max="23:00"></p>
-	  							</form>
-								</div> -->
-	   					  	
-	   					
 	                    </div>
 	                </div>    
 	                <!-- /.row -->
@@ -343,7 +333,6 @@
 	            <!-- /.container-fluid -->
 	        </div>
         <!-- /#page-wrapper -->
-
 		</div>
 		<!-- /#wrapper -->
 	</body>
