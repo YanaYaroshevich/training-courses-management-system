@@ -10,7 +10,7 @@ mainCtrl.controller('mainCtrl', ['$scope', /*'$modal',*/ function($scope, /*$mod
             title: 'Front-end',
             type: 'warning',
             startsAt: new Date(2015,6,20,14),
-            endsAt: new Date(2015,6,25,15),
+            endsAt: new Date(2015,6,25,16),
             draggable: true,
             resizable: true
         }, {

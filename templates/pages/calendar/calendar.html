@@ -140,6 +140,68 @@
 
 			<div id="page-wrapper">
 				<div class="container-fluid" ng-controller="mainCtrl as vm">
+                    
+                    <!-- Page Heading -->
+	                <div class="row">
+	                    <div class="col-lg-12">
+	                        <h1 class="page-header">
+	                            Calendar <small>Hey</small>
+	                        </h1>
+	                    </div>
+	                </div>
+	                <!-- /Page heading -->
+                  
+                    <!-- Month year -->
+                    <div class="row">
+                        <h2 class="text-center month-year">{{ vm.calendarTitle }}</h2>
+                    </div>
+                    <!-- /Month year -->
+                   
+                    <!-- Button group -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-default panel-body">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="btn-group">
+                                            <button
+                                                class="btn btn-primary"
+                                                mwl-date-modifier
+                                                date="vm.calendarDay"
+                                                decrement="vm.calendarView">
+                                                Previous
+                                            </button>
+                                            <button
+                                                class="btn btn-default"
+                                                mwl-date-modifier
+                                                date="vm.calendarDay"
+                                                set-to-today>
+                                                Today
+                                            </button>
+                                            <button
+                                                class="btn btn-primary"
+                                                mwl-date-modifier
+                                                date="vm.calendarDay"
+                                                increment="vm.calendarView">
+                                                Next
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="btn-group right-calendar-buttons">
+                                            <label class="btn btn-primary" ng-model="vm.calendarView" btn-radio="'year'">Year</label>
+                                            <label class="btn btn-primary" ng-model="vm.calendarView" btn-radio="'month'">Month</label>
+                                            <label class="btn btn-primary" ng-model="vm.calendarView" btn-radio="'week'">Week</label>
+                                            <label class="btn btn-primary" ng-model="vm.calendarView" btn-radio="'day'">Day</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Button group -->
+                    
+                    <!-- Calendar -->
                     <mwl-calendar
                         events="vm.events"
                         view="vm.calendarView"
