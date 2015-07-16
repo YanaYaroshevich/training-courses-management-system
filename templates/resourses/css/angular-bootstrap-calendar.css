@@ -500,7 +500,7 @@ span[data-cal-date]:hover {
 .cal-slide-content {
   padding: 20px;
   color: #ffffff;
-  background-color: #555555;
+  background-color: #314D5E;
   -webkit-box-shadow: inset 0px 0px 15px 0px rgba(0, 0, 0, 0.5);
   box-shadow: inset 0px 0px 15px 0px rgba(0, 0, 0, 0.5);
 }

@@ -350,3 +350,18 @@ ul.alert-dropdown {
 .nav-tabs > li > a:hover, .nav-tabs > li > a:focus {
 	color: white;
 }
+.right-calendar-buttons {
+    float: right;
+}
+
+.calendar-button-group {
+    margin-top: 45px;
+}
+
+.calendar {
+    padding-bottom: 50px;
+}
+
+.calendar-icons {
+    color: white;
+}

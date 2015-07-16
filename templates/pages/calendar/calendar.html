@@ -141,24 +141,8 @@
 			<div id="page-wrapper">
 				<div class="container-fluid" ng-controller="mainCtrl as vm">
                     
-                    <!-- Page Heading -->
-	                <div class="row">
-	                    <div class="col-lg-12">
-	                        <h1 class="page-header">
-	                            Calendar <small>Hey</small>
-	                        </h1>
-	                    </div>
-	                </div>
-	                <!-- /Page heading -->
-                  
-                    <!-- Month year -->
-                    <div class="row">
-                        <h2 class="text-center month-year">{{ vm.calendarTitle }}</h2>
-                    </div>
-                    <!-- /Month year -->
-                   
                     <!-- Button group -->
-                    <div class="row">
+                    <div class="row calendar-button-group">
                         <div class="col-lg-12">
                             <div class="panel panel-default panel-body">
                                 <div class="row">
@@ -201,24 +185,35 @@
                     </div>
                     <!-- /Button group -->
                     
+                    <!-- Month year -->
+	                <div class="row">
+	                    <div class="col-lg-12">
+	                        <h2 class="text-center">{{ vm.calendarTitle }}</h2>
+	                    </div>
+	                </div>
+	                <!-- /Month year -->
+                    
                     <!-- Calendar -->
-                    <mwl-calendar
-                        events="vm.events"
-                        view="vm.calendarView"
-                        view-title="vm.calendarTitle"
-                        current-day="vm.calendarDay"
-                        on-event-click="vm.eventClicked(calendarEvent)"
-                        on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
-                        edit-event-html="'<i class=\'glyphicon glyphicon-pencil\'></i>'"
-                        delete-event-html="'<i class=\'glyphicon glyphicon-remove\'></i>'"
-                        on-edit-event-click="vm.eventEdited(calendarEvent)"
-                        on-delete-event-click="vm.eventDeleted(calendarEvent)"
-                        auto-open="true"
-                        day-view-start="06:00"
-                        day-view-end="22:00"
-                        day-view-split="30"
-                        cell-modifier="vm.modifyCell(calendarCell)">
-                    </mwl-calendar>
+                    <div class="calendar">
+                        <mwl-calendar
+                            events="vm.events"
+                            view="vm.calendarView"
+                            view-title="vm.calendarTitle"
+                            current-day="vm.calendarDay"
+                            on-event-click="vm.eventClicked(calendarEvent)"
+                            on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
+                            edit-event-html="'<i class=\'glyphicon glyphicon-pencil calendar-icons\'></i>'"
+                            delete-event-html="'<i class=\'glyphicon glyphicon-remove calendar-icons\'></i>'"
+                            on-edit-event-click="vm.eventEdited(calendarEvent)"
+                            on-delete-event-click="vm.eventDeleted(calendarEvent)"
+                            auto-open="true"
+                            day-view-start="06:00"
+                            day-view-end="22:00"
+                            day-view-split="30"
+                            cell-modifier="vm.modifyCell(calendarCell)">
+                        </mwl-calendar>
+                    </div>
+                    <!-- /Calendar -->
 				</div>
 				<!-- /.container-fluid -->
 			</div>
