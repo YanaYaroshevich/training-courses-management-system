@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="welcomeApp">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" ng-app="welcomeApp">
 	<head>
-		<meta charset="utf-8"></meta>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
-		<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-		<link rel="shortcut icon" href="../../resourses/pics/favicon.gif"></link>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="shortcut icon" href="../../resources/vendors/pics/favicon.gif" th:href="@{/resources/vendors/pics/favicon.gif}" />
 
 		<title>Welcome page</title>
 		
 		<!-- Bootstrap Core CSS -->
-		<link href="../../resourses/css/bootstrap.css" rel="stylesheet"></link>
+		<link href="../../resources/vendors/css/bootstrap.css" th:href="@{/resources/vendors/css/bootstrap.css}" rel="stylesheet" />
 
 		<!-- Custom CSS -->
-		<link href="../../resourses/css/global.css" rel="stylesheet"></link>
+		<link href="../../resources/css/global.css" th:href="@{/resources/css/global.css}" rel="stylesheet" />
 
 		<!-- Custom Fonts -->
-		<link href="../../resourses/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"></link>
+		<link href="../../resources/vendors/font-awesome/css/font-awesome.min.css" th:href="@{/resources/vendors/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css" />
 
 		<!-- Angular -->
-		<script src="../../resourses/js/angular.js"></script>
-		<script src="welcome-app/app.js"></script>
-		<script src="../global-ctrls/collapse-ctrl.js"></script>
-		<script src="welcome-app/alert-ctrl.js"></script>
-		<script src="welcome-app/square-ctrl.js"></script>
-		<script src="../../resourses/js/ui-bootstrap-tpls-0.12.1.js"></script>
+		<script src="../../resources/vendors/js/angular.js" th:href="@{/resources/vendors/js/angular.js}"></script>
+		<script src="../../resources/js/welcome-app/app.js" th:href="@{/resources/js/welcome-app/app.js"></script>
+		<script src="../../resources/js/global-ctrls/collapse-ctrl.js" th:href="@{/resources/js/global-ctrls/collapse-ctrl.js}"></script>
+		<script src="../../resources/js/welcome-app/alert-ctrl.js" th:href="@{/resources/js/welcome-app/alert-ctrl.js}"></script>
+		<script src="../../resources/js/welcome-app/square-ctrl.js" th:href="@{/resources/js/welcome-app/square-ctrl.js}"></script>
+		<script src="../../resources/vendors/js/ui-bootstrap-tpls-0.12.1.js" th:href="@{/resources/vendors/js/ui-bootstrap-tpls-0.12.1.js}"></script>
 	</head>
 
 	<body>
@@ -38,52 +38,48 @@
 						<span class="icon-bar"></span>
 					</button>
 
-					<a class="navbar-brand" href="welcome.html">
-						<img alt="Brand" src="../../resourses/pics/exadel-logo.png"></img>
+					<a class="navbar-brand" href="welcome.html" th:href="@{/welcome}">
+						<img alt="Brand" src="../../resources/vendors/pics/exadel-logo.png" th:src="@{/resources/vendors/pics/exadel-logo.png}" />
 					</a>
 				</div>
 
 				<!-- Top Menu Items -->
 				<ul class="nav navbar-right top-nav">
-					<!--TODO!!! dynamic-->
-					<li class="active">   
-						<a href = "welcome.html">      
+					<li class="active">
+						<a href = "welcome.html" th:href="@{/welcome}">
 							<i class = "fa fa-fw fa-user"></i>
-							User Name  
-						</a>     
+							<span sec:authentication="name"></span>
+						</a>
 					</li>
 
 					<li class="active">
-						<a href="../login/login.html">
-							<i class="fa fa-fw fa-power-off"></i> 
+						<a href="#" th:href="@{/logout}" id="logout">
+							<i class="fa fa-fw fa-power-off"></i>
 							Log out
 						</a>
 					</li>
 
 					<ul class="nav navbar-right top-nav language-panel">
-						<li><a class = "lang" href = "welcome.html">En</a></li>
-						<li><a class = "lang" href = "welcome.html">Ru</a></li>
-                	</ul>
+						<li><a class="lang" href = "all-trainings.html">En</a></li>
+						<li><a class="lang" href = "all-trainings.html">Ru</a></li>
+					</ul>
 				</ul>
 
 				<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
 				<div class="collapse navbar-collapse" collapse="isCollapsed">
 					<ul class="nav navbar-nav side-nav" id = "left-menu">
-
 						<li id = "alltrainings">
-							<a href="../all-trainings/all-trainings.html">
-								<i class="fa fa-fw fa-circle"></i> 
+							<a href="all-trainings.html" th:href="@{/training/all}">
+								<i class="fa fa-fw fa-circle"></i>
 								All trainings
 							</a>
 						</li>
-
-						<li id="mytrainings">
+						<li id = "mytrainings">
 							<a href="#" ng-click="isCollapsed2=!isCollapsed2">
-								<i class="fa fa-fw fa-circle"></i> 
-								My trainings 
+								<i class="fa fa-fw fa-circle"></i>
+								My trainings
 								<i class="fa fa-fw fa-caret-down"></i>
 							</a>
-
 							<ul collapse="isCollapsed2">
 								<li>
 									<a href="../my-trainings/my-trainings.html">
@@ -91,7 +87,6 @@
 										As a trainer
 									</a>
 								</li>
-
 								<li>
 									<a href="../my-trainings/my-trainings.html">
 										<i class="fa fa-fw fa-angle-right"></i>
@@ -100,28 +95,24 @@
 								</li>
 							</ul>
 						</li>
-
 						<li id = "newtraining">
-							<a href="../new-training/new-training.html">
-								<i class="fa fa-fw fa-circle"></i> 
+							<a href="new-training.html" th:href="@{/training/new}">
+								<i class="fa fa-fw fa-circle"></i>
 								Create new training
 							</a>
 						</li>
-
-						<li id = "newtrainer">
-							<a href="../new-trainer/new-trainer.html">
-								<i class="fa fa-fw fa-circle"></i> 
+						<li sec:authorize="hasRole('ROLE_ADMIN')" id = "newtrainer">
+							<a href="new-trainer.html">
+								<i class="fa fa-fw fa-circle"></i>
 								Add new external trainer
 							</a>
 						</li>
-
-						<li id = "users">
-							<a href="../users/users.html">
-								<i class="fa fa-fw fa-circle"></i> 
+						<li sec:authorize="hasRole('ROLE_ADMIN')" id = "users">
+							<a href="users.html">
+								<i class="fa fa-fw fa-circle"></i>
 								Users
 							</a>
 						</li>
-
 						<li id = "copyright">
 							<footer>
 								<span>©Exadel, Inc. All Rights Reserved.</span>
@@ -130,6 +121,7 @@
 					</ul>
 				</div>
 			</nav>
+			<!-- /Navigation -->
 
 			<div id="page-wrapper">
 				<div class="container-fluid">

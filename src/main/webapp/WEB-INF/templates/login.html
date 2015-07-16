@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <meta charset="utf-8"></meta>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
-        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-        <link rel="shortcut icon" href="../../resourses/pics/favicon.gif"></link>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="shortcut icon" href="../../resources/vendors/pics/favicon.gif" th:href="@{/resources/vendors/pics/favicon.gif/}">
 
         <title>Login page</title>
 
         <!-- Bootstrap Core CSS -->
-	    <link href="../../resourses/css/bootstrap.css" rel="stylesheet"></link>
+	    <link href="../../resources/vendors/css/bootstrap.css" th:href="@{/resources/vendors/css/bootstrap.css}" rel="stylesheet" />
         
         <!-- Login CSS -->
-        <link href="../../resourses/css/login.css" rel="stylesheet"></link>
+        <link href="../../resources/css/login.css" th:href="@{/resources/css/login.css}" rel="stylesheet" />
     </head>
 
     <body>
@@ -21,8 +21,8 @@
             <!-- Navigation -->
             <nav class="navbar navbar-inverse navbar-fixed-top" id="top-menu" role="navigation">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="login.html">
-                        <img alt="Brand" src="../../resourses/pics/exadel-logo.png"></img>
+                    <a class="navbar-brand" href="login.html" th:href="@{/login}">
+                        <img alt="Brand" src="../../resources/vendors/pics/exadel-logo.png" th:href="@{/resources/vendors/pics/exadel-logo.png}" />
                     </a>
                 </div>  
                 <ul class="nav navbar-right top-nav">
@@ -43,40 +43,37 @@
                         <!-- Login window -->
                         <div class="panel panel-default login-window">
                             <div class="panel-body">
-                                <div class="row11">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group input-login">
-                                        <div id="alertLog" class="alert alert-danger" role="alert">
+                                <form class="form" role="form" th:action="@{/login}" method="post">
+                                    <div class=form-group">
+                                        <div th:if="${loginError}" id="alertLog" class="alert alert-danger" role="alert">
                                             <p>Wrong password or login</p>
                                         </div>
-                                        <label for="">Login</label>
-                                        <input type="text" class="form-control" placeholder="Login" autofocus="autofocus" required="required"></input>
                                     </div>
-                                </div>
-                                <div class="row21">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group input-password">
-                                       <label for="">Password</label>
-                                       <input type="password" class="form-control" placeholder="Password" required="required"></input>
+                                    <div class="form-group">
+                                        <label for="username">Login</label>
+                                        <input type="text" class="form-control" id="username" name="username" placeholder="Login" autofocus="autofocus" required="required" />
                                     </div>
-                                </div>
-                                <div class="row31">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox"> Remember me </input>
-                                            </label>
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" class="form-control" id="password" placeholder="Password" required="required" />
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> Remember me </input>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                            <button type="submit" class="btn btn-primary sign-in-btn">Sign in</button>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                        <a class="login-button" href="../welcome/welcome.html">
-                                            <button class="btn btn-primary">Log in</button>
-                                        </a>
-                                    </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                         <!-- /.login-window -->            
                     </div>
-                    <div class="col-lg-4 col-md-3 col-sm-2 col-xs-2"></div>
                 </div>
             </div>
             <!-- /.container1 -->
