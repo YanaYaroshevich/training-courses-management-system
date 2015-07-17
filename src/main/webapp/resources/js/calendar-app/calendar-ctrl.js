@@ -55,7 +55,8 @@ calendarCtrl.controller('calendarCtrl', ['$scope', function($scope, moment) {
         var answer = confirm("Do you really want delete this training?");
         
         if (answer) {
-            vm.events.splice(event, 1);
+            var x = vm.events.indexOf(event);
+            vm.events.splice(x, 1);
         }
     };
 
