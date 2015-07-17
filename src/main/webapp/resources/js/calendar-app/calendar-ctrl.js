@@ -15,7 +15,7 @@ calendarCtrl.controller('calendarCtrl', ['$scope', function($scope, moment) {
             deletable: true,
             draggable: false,
             resizable: true,
-            //recusOn: 'month',
+            //recursOn: 'month',
             //cssClass: 'css-class'            
         }, {
             title: 'Back-end',
@@ -26,7 +26,7 @@ calendarCtrl.controller('calendarCtrl', ['$scope', function($scope, moment) {
             deletable: true,
             draggable: false,
             resizable: true,
-            //recusOn: 'month',
+            //recursOn: 'month',
             //cssClass: 'css-class'
         }, {
             title: 'SQL',
@@ -37,7 +37,7 @@ calendarCtrl.controller('calendarCtrl', ['$scope', function($scope, moment) {
             deletable: true,
             draggable: false,
             resizable: true,
-            //recusOn: 'month',
+            //recursOn: 'month',
             //cssClass: 'css-class'
         }
     ];
