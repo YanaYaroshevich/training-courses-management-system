@@ -1,30 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="newTrainingApp">
-	<head>
-		<meta charset="utf-8" />
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" ng-app="newTrainingApp">
+    <head>
+        <meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="shortcut icon" href="../../resources/pics/favicon.gif">
+		<meta name="description" content="" />
+		<meta name="author" content="" />
+        <link rel="shortcut icon" href="../../resources/vendors/pics/favicon.gif" th:href="@{/resources/vendors/pics/favicon.gif}" />
 
 		<title>Create new training</title>
 		
 		<!-- Bootstrap Core CSS -->
-		<link href="../../resources/css/bootstrap.css" rel="stylesheet" />
+		<link href="../../resources/vendors/css/bootstrap.css" th:href="@{/resources/vendors/css/bootstrap.css}" rel="stylesheet" />
 
 		<!-- Custom CSS -->
-		<link href="../../resources/css/global.css" rel="stylesheet" />
+		<link href="../../resources/css/global.css" th:href="@{/resources/css/global.css}" rel="stylesheet" />
 
 		<!-- Custom Fonts -->
-		<link href="../../resources/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-
-		<!-- Angular -->
-		<script src="../../resources/js/angular.js"></script>
-		<script src="new-training-app/app.js"></script>
-		<script src="new-training-app/pagination-ctrl.js"></script>
-		<script src="new-training-app/checkbox-ctrl.js"></script>
-		<script src="../global-ctrls/collapse-ctrl.js"></script>
-		<script src="../../resources/js/ui-bootstrap-tpls-0.12.1.js"></script>
+		<link href="../../resources/vendors/font-awesome/css/font-awesome.min.css" th:href="@{/resources/vendors/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css" />
+		
+		<!-- Bootstrap Core JavaScript -->
+		<script src="../../resources/vendors/js/bootstrap.js" th:src="@{/resources/vendors/js/bootstrap.js}"></script>
+       
+        <!-- Angular -->
+		<script src="../../resources/vendors/js/angular.js" th:src="@{/resources/vendors/js/angular.js}"></script>
+		<script src="../../resources/js/new-training-app/app.js" th:src="@{/resources/js/new-training-app/app.js}"></script>
+		<script src="../../resources/js/new-training-app/checkbox-ctrl.js" th:src="@{/resources/js/new-training-app/checkbox-ctrl.js}"></script>
+		<script src="../../resources/js/global-ctrls/collapse-ctrl.js" th:src="@{/resources/js/global-ctrls/collapse-ctrl.js}"></script>
+		<script src="../../resources/js/new-training-app/pagination-ctrl.js" th:src="@{/resources/js/new-training-app/pagination-ctrl.js}"></script>
+		<script src="../../resources/vendors/js/ui-bootstrap-tpls-0.12.1.js" th:src="@{/resources/vendors/js/ui-bootstrap-tpls-0.12.1.js}"></script>
 	</head>
+
 
 	<body>
 		<div id="wrapper">
@@ -38,7 +44,7 @@
 					</button>
 
 					<a class="navbar-brand" href="welcome.html">
-						<img alt="Brand" src="../../resources/pics/exadel-logo.png" />
+						<img alt="Brand" src="../../resources/vendors/pics/exadel-logo.png" th:src="@{/resources/vendors/pics/exadel-logo.png}" />
 					</a>
 				</div>
 

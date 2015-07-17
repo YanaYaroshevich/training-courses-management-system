@@ -1,92 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" ng-app="allTrainingsApp">
 	<head>
-		<meta charset="utf-8" />
+        <meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content="" />
 		<meta name="author" content="" />
-		<link rel="shortcut icon" href="pics/favicon.gif" />
+        <link rel="shortcut icon" href="../../resources/vendors/pics/favicon.gif" th:href="@{/resources/vendors/pics/favicon.gif}" />
 
 		<title>User</title>
 		
 		<!-- Bootstrap Core CSS -->
-		<link href="css/bootstrap.css" rel="stylesheet" />
+		<link href="../../resources/vendors/css/bootstrap.css" th:href="@{/resources/vendors/css/bootstrap.css}" rel="stylesheet" />
 
 		<!-- Custom CSS -->
-		<link href="css/global.css" rel="stylesheet" />
-
-		<!-- Morris Charts CSS -->
-		<link href="css/plugins/morris.css" rel="stylesheet" />
+		<link href="../../resources/css/global.css" th:href="@{/resources/css/global.css}" rel="stylesheet" />
 
 		<!-- Custom Fonts -->
-		<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+		<link href="../../resources/vendors/font-awesome/css/font-awesome.min.css" th:href="@{/resources/vendors/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css" />
+		
+        <!-- jQuery -->
+		<script src="../../resources/vendors/js/jquery.js" th:src="@{/resources/vendors/js/jquery.js"></script>
+		
+		<!-- Bootstrap Core JavaScript -->
+		<script src="../../resources/vendors/js/bootstrap.js" th:src="@{/resources/vendors/js/bootstrap.js}"></script>
+       
+        <!-- Angular -->
+		<script src="../../resources/vendors/js/angular.js" th:src="@{/resources/vendors/js/angular.js}"></script>
+		<script src="../../resources/js/global-ctrls/collapse-ctrl.js" th:src="@{/resources/js/global-ctrls/collapse-ctrl.js}"></script>
+		<script src="../../resources/vendors/js/ui-bootstrap-tpls-0.12.1.js" th:src="@{/resources/vendors/js/ui-bootstrap-tpls-0.12.1.js}"></script>
 	</head>
 
 	<body>
 		<div id="wrapper">
 
 			<!-- Navigation -->
-			<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id = "top-menu">
+			<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id = "top-menu" ng-controller="collapseCtrl">
 				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse" id="menu-button">
+					<button type="button" class="navbar-toggle" id="menu-button" ng-click="isCollapsed = !isCollapsed">
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
 
-					<a class="navbar-brand" href="welcome.html">
-						<img alt="Brand" src="pics/exadel-logo.png" />
+					<a class="navbar-brand" href="welcome.html" th:href="@{/welcome}">
+						<img alt="Brand" src="../../resources/vendors/pics/exadel-logo.png" th:src="@{/resources/vendors/pics/exadel-logo.png}" />
 					</a>
 				</div>
 
 				<!-- Top Menu Items -->
 				<ul class="nav navbar-right top-nav">
-					<!--TODO!!! dynamic-->
-					<li class="active">   
-						<a href = "welcome.html">      
+					<li class="active">
+						<a href = "welcome.html" th:href="@{/welcome}">
 							<i class = "fa fa-fw fa-user"></i>
-							userName  
-						</a>     
+							<span sec:authentication="name"></span>
+						</a>
 					</li>
 
 					<li class="active">
-						<a href="login.html">
-							<i class="fa fa-fw fa-power-off"></i> 
-							Log Out
+						<a href="#" th:href="@{/logout}" id="logout">
+							<i class="fa fa-fw fa-power-off"></i>
+							Log out
 						</a>
 					</li>
 
 					<ul class="nav navbar-right top-nav language-panel">
-						<li><a id = "langEn" href = "welcome.html">En</a></li>
-						<li><a id = "langRu" href = "welcome.html">Ru</a></li>
-                	</ul>
+						<li><a class="lang" href = "all-trainings.html">En</a></li>
+						<li><a class="lang" href = "all-trainings.html">Ru</a></li>
+					</ul>
 				</ul>
 
 				<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-				<div class="collapse navbar-collapse navbar-ex1-collapse">
+				<div class="collapse navbar-collapse" collapse="isCollapsed">
 					<ul class="nav navbar-nav side-nav" id = "left-menu">
 						<li id = "alltrainings">
-							<a href="alltrainings.html">
-								<i class="fa fa-fw fa-circle-o"></i> 
+							<a href="all-trainings.html" th:href="@{/training/all}">
+								<i class="fa fa-fw fa-circle"></i>
 								All trainings
 							</a>
 						</li>
 						<li id = "mytrainings">
-							<a href="javascript:;" data-toggle="collapse" data-target="#demo">
-								<i class="fa fa-fw fa-circle-o"></i> 
-								My trainings 
+							<a href="#" ng-click="isCollapsed2=!isCollapsed2">
+								<i class="fa fa-fw fa-circle"></i>
+								My trainings
 								<i class="fa fa-fw fa-caret-down"></i>
 							</a>
-							<ul id="demo" class="collapse">
+							<ul collapse="isCollapsed2">
 								<li>
-									<a href="mytrainings.html">
+									<a href="../my-trainings/my-trainings.html">
 										<i class="fa fa-fw fa-angle-right"></i>
 										As a trainer
 									</a>
 								</li>
 								<li>
-									<a href="mytrainings.html">
+									<a href="../my-trainings/my-trainings.html">
 										<i class="fa fa-fw fa-angle-right"></i>
 										As a guest
 									</a>
@@ -94,20 +101,20 @@
 							</ul>
 						</li>
 						<li id = "newtraining">
-							<a href="newtraining.html">
-								<i class="fa fa-fw fa-circle-o"></i> 
+							<a href="new-training.html" th:href="@{/training/new}">
+								<i class="fa fa-fw fa-circle"></i>
 								Create new training
 							</a>
 						</li>
-						<li id = "newtrainer">
-							<a href="newtrainer.html">
-								<i class="fa fa-fw fa-circle-o"></i> 
+						<li sec:authorize="hasRole('ROLE_ADMIN')" id = "newtrainer">
+							<a href="new-trainer.html">
+								<i class="fa fa-fw fa-circle"></i>
 								Add new external trainer
 							</a>
 						</li>
-						<li id = "users">
+						<li sec:authorize="hasRole('ROLE_ADMIN')" id = "users">
 							<a href="users.html">
-								<i class="fa fa-fw fa-circle-o"></i> 
+								<i class="fa fa-fw fa-circle"></i>
 								Users
 							</a>
 						</li>
@@ -119,6 +126,7 @@
 					</ul>
 				</div>
 			</nav>
+			<!-- /Navigation -->
 
 			<div id="page-wrapper">
 				<div class="container-fluid">
@@ -127,23 +135,16 @@
 					<div class="row">
 						<div class="col-lg-12">
 							<h1 class="page-header">
-								User <small>Information about user</small>
+								User <small>user</small>
 							</h1>
 						</div>
 					</div>
                     <!-- /Page Heading -->
-
 				</div>
 				<!-- /.container-fluid -->
 			</div>
 			<!-- /#page-wrapper -->
 		</div>
 		<!-- /#wrapper -->
-
-		<!-- jQuery -->
-		<script src="js/jquery.js"></script>
-
-		<!-- Bootstrap Core JavaScript -->
-		<script src="js/bootstrap.min.js"></script>
 	</body>
 </html>

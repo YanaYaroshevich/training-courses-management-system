@@ -22,7 +22,7 @@
             <nav class="navbar navbar-inverse navbar-fixed-top" id="top-menu" role="navigation">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="login.html" th:href="@{/login}">
-                        <img alt="Brand" src="../../resources/vendors/pics/exadel-logo.png" th:href="@{/resources/vendors/pics/exadel-logo.png}" />
+                        <img alt="Brand" src="../../resources/vendors/pics/exadel-logo.png" th:src="@{/resources/vendors/pics/exadel-logo.png}" />
                     </a>
                 </div>  
                 <ul class="nav navbar-right top-nav">
@@ -44,7 +44,7 @@
                         <div class="panel panel-default login-window">
                             <div class="panel-body">
                                 <form class="form" role="form" th:action="@{/login}" method="post">
-                                    <div class=form-group">
+                                    <div class="form-group">
                                         <div th:if="${loginError}" id="alertLog" class="alert alert-danger" role="alert">
                                             <p>Wrong password or login</p>
                                         </div>

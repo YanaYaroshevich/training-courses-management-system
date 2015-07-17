@@ -1,1 +1,1 @@
-var calendarApp = angular.module('calendarApp', ['collapseCtrl', 'mainCtrl', 'ui.bootstrap', 'mwl.calendar']);
+var calendarApp = angular.module('calendarApp', ['collapseCtrl', 'calendarCtrl', 'ui.bootstrap', 'mwl.calendar']);

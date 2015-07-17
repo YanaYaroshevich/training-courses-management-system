@@ -1,6 +1,6 @@
-var mainCtrl = angular.module('mainCtrl', []);
+var calendarCtrl = angular.module('calendarCtrl', []);
 
-mainCtrl.controller('mainCtrl', ['$scope', function($scope, moment) {
+calendarCtrl.controller('calendarCtrl', ['$scope', function($scope, moment) {
     var vm = this;
     
     vm.calendarDay = new Date();

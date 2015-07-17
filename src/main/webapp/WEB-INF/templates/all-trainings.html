@@ -6,28 +6,31 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content="" />
 		<meta name="author" content="" />
-        <link rel="shortcut icon" href="../../resources/vendors/pics/favicon.gif" th:src="@{/resources}" />
+        <link rel="shortcut icon" href="../../resources/vendors/pics/favicon.gif" th:href="@{/resources/vendors/pics/favicon.gif}" />
 
 		<title>All trainings</title>
 		
 		<!-- Bootstrap Core CSS -->
-		<link href="../../resources/vendors/css/bootstrap.css" th:src="@{/resources}" rel="stylesheet" />
+		<link href="../../resources/vendors/css/bootstrap.css" th:href="@{/resources/vendors/css/bootstrap.css}" rel="stylesheet" />
 
 		<!-- Custom CSS -->
-		<link href="../../resources/css/global.css" th:src="@{/resources}" rel="stylesheet" />
-
-		<!-- Morris Charts CSS -->
-		<link href="../../resources/vendors/css/plugins/morris.css" th:src="@{/resources}" rel="stylesheet" />
+		<link href="../../resources/css/global.css" th:href="@{/resources/css/global.css}" rel="stylesheet" />
 
 		<!-- Custom Fonts -->
-		<link href="../../resources/vendors/font-awesome/css/font-awesome.min.css" th:src="@{/resources}" rel="stylesheet" type="text/css" />
+		<link href="../../resources/vendors/font-awesome/css/font-awesome.min.css" th:href="@{/resources/vendors/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css" />
 		
+        <!-- jQuery -->
+		<script src="../../resources/vendors/js/jquery.js" th:src="@{/resources/vendors/js/jquery.js"></script>
+		
+		<!-- Bootstrap Core JavaScript -->
+		<script src="../../resources/vendors/js/bootstrap.js" th:src="@{/resources/vendors/js/bootstrap.js}"></script>
+       
         <!-- Angular -->
-		<script src="../../resources/vendors/js/angular.js" th:src="@{/resources}"></script>
-		<script src="../../resources/js/all-trainings-app/app.js" th:src="@{/resources}"></script>
-		<script src="../../resources/js/global-ctrls/collapse-ctrl.js" th:src="@{/resources}"></script>
-		<script src="../../resources/js/all-trainings-app/tabs-ctrl.js" th:src="@{/resources}"></script>
-		<script src="../../resources/vendors/js/ui-bootstrap-tpls-0.12.1.js" th:src="@{/resources}"></script>
+		<script src="../../resources/vendors/js/angular.js" th:src="@{/resources/vendors/js/angular.js}"></script>
+		<script src="../../resources/js/all-trainings-app/app.js" th:src="@{/resources/js/all-trainings-app/app.js}"></script>
+		<script src="../../resources/js/global-ctrls/collapse-ctrl.js" th:src="@{/resources/js/global-ctrls/collapse-ctrl.js}"></script>
+		<script src="../../resources/js/all-trainings-app/tabs-ctrl.js" th:src="@{/resources/js/all-trainings-app/tabs-ctrl.js}"></script>
+		<script src="../../resources/vendors/js/ui-bootstrap-tpls-0.12.1.js" th:src="@{/resources/vendors/js/ui-bootstrap-tpls-0.12.1.js}"></script>
 	</head>
 
 	<body>
@@ -511,11 +514,5 @@
 			<!-- /#page-wrapper -->
 		</div>
 		<!-- /#wrapper -->
-		
-        <!-- jQuery -->
-		<script src="../../resources/vendors/js/jquery.js"></script>
-
-		<!-- Bootstrap Core JavaScript -->
-		<script src="../../resources/vendors/js/bootstrap.js"></script>
 	</body>
 </html>
