@@ -8,7 +8,6 @@ paginationCtrl.controller('paginationCtrl', function ($scope) {
   
   $scope.setPage = function (pageNo) {
     $scope.currentPage = pageNo;
-    $scope.toShow();
   };
     
   /*function getDays(trainingRepet){
