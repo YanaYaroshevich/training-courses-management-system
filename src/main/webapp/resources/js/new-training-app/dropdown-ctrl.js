@@ -1,7 +1,8 @@
 'use strict'
 
 var dropdownCtrl = angular.module('dropdownCtrl', []);
-dropdownCtrl.controller('dropdownCtrl', function ($scope, $log) {
+
+dropdownCtrl.controller('dropdownCtrl', function ($scope) {
   
   $scope.toShowRepet = 'One-off ';
   $scope.toShowType = 'Inner training ';
@@ -9,14 +10,17 @@ dropdownCtrl.controller('dropdownCtrl', function ($scope, $log) {
 
   $scope.chooseRepet = function(rep){
     $scope.whatChosen = rep;
-    if (rep == 0)
+    if (rep == 0){
       $scope.toShowRepet = 'One-off ';
+    }
     
-    else if (rep == 1)
+    else if (rep == 1){
       $scope.toShowRepet = 'Weekly ';
+    }
       
-    else
+    else{
       $scope.toShowRepet = 'Continuous ';
+    }
   }
 
   $scope.chooseType = function(rep){
@@ -24,5 +28,18 @@ dropdownCtrl.controller('dropdownCtrl', function ($scope, $log) {
       $scope.toShowType = 'Inner training ';
     else if (rep == 1)
       $scope.toShowType = 'Outer training ';
+  }
+  
+  $scope.toShow = function(){     
+        if ($scope.toShowRepet.replace(/\s/g, '') == 'One-off' || $scope.toShowRepet.replace(/\s/g, '') == 'Weekly')
+            $scope.$parent.q = 1;
+        else 
+            $scope.$parent.q = $scope.days;
+    
+        $scope.$parent.descriptions = [];
+        for (var i = 0; i < $scope.$parent.q; i++) {
+            $scope.$parent.descriptions.push('');
+        }
+        return true;
   }
 });

@@ -21,8 +21,6 @@ checkboxCtrl.controller('checkboxCtrl', function ($scope) {
         { type: 'checkbox', audience: 'Testers', checked: false}
 	];
 
-	window.scope = $scope;
-
 	$scope.selectAll = false;
 	
 	$scope.toggleSeleted = function() {
