@@ -139,74 +139,130 @@
     <div id="page-wrapper">
         <div class="container-fluid" ng-controller="calendarCtrl as vm">
 
-            <!-- Button group -->
-            <div class="row calendar-button-group">
+            <!-- Page Heading -->
+            <div class="row">
                 <div class="col-lg-12">
-                    <div class="panel panel-default panel-body">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <div class="btn-group">
-                                    <button
-                                            class="btn btn-primary"
-                                            mwl-date-modifier
-                                            date="vm.calendarDay"
-                                            decrement="vm.calendarView">
-                                        Previous
-                                    </button>
-                                    <button
-                                            class="btn btn-default"
-                                            mwl-date-modifier
-                                            date="vm.calendarDay"
-                                            set-to-today>
-                                        Today
-                                    </button>
-                                    <button
-                                            class="btn btn-primary"
-                                            mwl-date-modifier
-                                            date="vm.calendarDay"
-                                            increment="vm.calendarView">
-                                        Next
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <h2 class="text-center calendar-title">{{ vm.calendarTitle }}</h2>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="btn-group right-calendar-buttons">
-                                    <label class="btn btn-primary" ng-model="vm.calendarView" btn-radio="'year'">Year</label>
-                                    <label class="btn btn-primary" ng-model="vm.calendarView" btn-radio="'month'">Month</label>
-                                    <label class="btn btn-primary" ng-model="vm.calendarView" btn-radio="'week'">Week</label>
-                                    <label class="btn btn-primary" ng-model="vm.calendarView" btn-radio="'day'">Day</label>
+                    <h1 class="page-header">
+                        My trainings <small>as a guest</small>
+                    </h1>
+                </div>
+            </div>
+            <!-- /Page Heading -->
+
+            <!-- Tabs -->
+            <div class="tabs">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#fut" data-toggle="tab">Future trainings</a></li>
+                    <li><a href="#hist" data-toggle="tab">History of trainings</a></li>
+                    <li><a href="#wait" data-toggle="tab">Waiting list</a></li>
+                </ul>
+            </div>
+            <!-- /Tabs -->
+
+            <!-- Tab content -->
+            <div class="tab-content panel panel-default panel-body">
+
+                <!-- Future -->
+                <div class="tab-pane fade in active" id="fut">
+
+
+
+                    <!--   ==========================================================================              -->
+
+
+
+
+                    <!-- Radio-btn -->
+                    <div class="btn-group right-calendar-buttons">
+                        <label class="btn btn-primary" ng-model="calendar" btn-radio="'table'">Table</label>
+                        <label class="btn btn-primary" ng-model="calendar" btn-radio="'calendar'">Calendar</label>
+                    </div>
+                    <!-- /Radio-btn -->
+
+                    <!-- Button group -->
+                    <div class="row calendar-button-group">
+                        <div class="col-lg-12">
+                            <div class="panel panel-default panel-body">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="btn-group">
+                                            <button
+                                                    class="btn btn-primary"
+                                                    mwl-date-modifier
+                                                    date="vm.calendarDay"
+                                                    decrement="vm.calendarView">
+                                                Previous
+                                            </button>
+                                            <button
+                                                    class="btn btn-default"
+                                                    mwl-date-modifier
+                                                    date="vm.calendarDay"
+                                                    set-to-today>
+                                                Today
+                                            </button>
+                                            <button
+                                                    class="btn btn-primary"
+                                                    mwl-date-modifier
+                                                    date="vm.calendarDay"
+                                                    increment="vm.calendarView">
+                                                Next
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <h2 class="text-center calendar-title">{{ vm.calendarTitle }}</h2>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="btn-group right-calendar-buttons">
+                                            <label class="btn btn-primary" ng-model="vm.calendarView" btn-radio="'year'">Year</label>
+                                            <label class="btn btn-primary" ng-model="vm.calendarView" btn-radio="'month'">Month</label>
+                                            <label class="btn btn-primary" ng-model="vm.calendarView" btn-radio="'week'">Week</label>
+                                            <label class="btn btn-primary" ng-model="vm.calendarView" btn-radio="'day'">Day</label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <!-- /Button group -->
+                    <!-- /Button group -->
 
-            <!-- Calendar -->
-            <div class="calendar">
-                <mwl-calendar
-                        events="vm.events"
-                        view="vm.calendarView"
-                        view-title="vm.calendarTitle"
-                        current-day="vm.calendarDay"
-                        on-event-click="vm.eventClicked(calendarEvent)"
-                        on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
-                        edit-event-html="'<a target=\'_blank\' href=\'trainings-edit.html\'><i class=\'glyphicon glyphicon-pencil calendar-icons\'></i></a>'"
-                        delete-event-html="'<i class=\'glyphicon glyphicon-remove calendar-icons\'></i>'"
-                        on-edit-event-click="vm.eventEdited(calendarEvent)"
-                        on-delete-event-click="vm.eventDeleted(calendarEvent)"
-                        auto-open="true"
-                        day-view-start="06:00"
-                        day-view-end="22:00"
-                        day-view-split="30"
-                        cell-modifier="vm.modifyCell(calendarCell)">
-                </mwl-calendar>
+                    <!-- Calendar -->
+                    <div class="calendar">
+                        <mwl-calendar
+                                events="vm.events"
+                                view="vm.calendarView"
+                                view-title="vm.calendarTitle"
+                                current-day="vm.calendarDay"
+                                on-event-click="vm.eventClicked(calendarEvent)"
+                                on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
+                                edit-event-html="'<a target=\'_blank\' href=\'trainings-edit.html\'><i class=\'glyphicon glyphicon-pencil calendar-icons\'></i></a>'"
+                                delete-event-html="'<i class=\'glyphicon glyphicon-remove calendar-icons\'></i>'"
+                                on-edit-event-click="vm.eventEdited(calendarEvent)"
+                                on-delete-event-click="vm.eventDeleted(calendarEvent)"
+                                auto-open="true"
+                                day-view-start="06:00"
+                                day-view-end="22:00"
+                                day-view-split="30"
+                                cell-modifier="vm.modifyCell(calendarCell)">
+                        </mwl-calendar>
+                    </div>
+                    <!-- /Calendar -->
+                </div>
+                <!-- /Future -->
+
+                <!-- History -->
+                <div id="hist">
+
+                </div>
+                <!-- /History -->
+
+                <!-- Wait -->
+                <div id="wait">
+
+                </div>
+                <!-- /Wait -->
             </div>
-            <!-- /Calendar -->
+            <!-- /Tab content -->
         </div>
         <!-- /.container-fluid -->
     </div>

@@ -30,7 +30,7 @@
         <script src="../../resources/vendors/js/angular-route.js" th:src="@{/resources/vendors/js/angular-route.js}"></script>
 		<script src="../../resources/js/all-trainings-app/app.js" th:src="@{/resources/js/all-trainings-app/app.js}"></script>
 		<script src="../../resources/js/global-ctrls/collapse-ctrl.js" th:src="@{/resources/js/global-ctrls/collapse-ctrl.js}"></script>
-        <script src="../../resources/js/all-trainings-app/tabs-ctrl.js" th:src="@{/resources/js/all-trainings-app/tabs-ctrl.js}"></script>
+        <script src="../../resources/js/all-trainings-app/tabs-ctrl.js" th:src="@{/resources/js/all-trainings-app/future-tab-ctrl.js}"></script>
 		<script src="../../resources/vendors/js/ui-bootstrap-tpls-0.12.1.js" th:src="@{/resources/vendors/js/ui-bootstrap-tpls-0.12.1.js}"></script>
 	</head>
 
@@ -90,13 +90,13 @@
 							</a>
 							<ul collapse="isCollapsed2">
 								<li ng-click="">
-									<a href="my-trainings-as-trainer.html">
+									<a href="my-trainings-as-trainer.html" th:href="@{/my-trainings-as-trainer.html}">
 										<i class="fa fa-fw fa-angle-right"></i>
 										As a trainer
 									</a>
 								</li>
 								<li ng-click="">
-									<a href="my-trainings-as-guest.html">
+									<a href="my-trainings-as-guest.html" th:href="@{/my-trainings-as-guest.html}">
 										<i class="fa fa-fw fa-angle-right"></i>
 										As a guest
 									</a>
@@ -151,6 +151,7 @@
 							<li><a href="#rec" data-toggle="tab">Recommendations</a></li>
 							<li sec:authorize="hasRole('ROLE_ADMIN')"><a href="#hist" data-toggle="tab">History of trainings</a></li>
                         </ul>
+
                         <!-- Tab content -->
                         <div class="tab-content panel panel-default panel-body">
                            	<!-- Future trainings -->
