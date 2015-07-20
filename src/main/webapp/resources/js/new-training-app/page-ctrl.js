@@ -236,6 +236,8 @@ pageCtrl.controller('pageCtrl', function ($scope) {
             
             /* Repetition frequency */
             
+            
+            
             trainings.push(training);
         }
         
