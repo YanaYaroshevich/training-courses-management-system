@@ -1,3 +1,5 @@
+'use strict';
+
 var pageCtrl = angular.module('pageCtrl', []);
 
 pageCtrl.controller('pageCtrl', function ($scope) {

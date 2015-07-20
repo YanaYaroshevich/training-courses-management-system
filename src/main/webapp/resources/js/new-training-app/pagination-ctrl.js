@@ -1,3 +1,5 @@
+'use strict';
+
 var paginationCtrl = angular.module('paginationCtrl', []);
 
 paginationCtrl.controller('paginationCtrl', function ($scope) {
