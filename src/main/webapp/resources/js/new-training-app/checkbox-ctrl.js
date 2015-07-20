@@ -1,3 +1,5 @@
+'use strict';
+
 var checkboxCtrl = angular.module('checkboxCtrl', []);
 
 checkboxCtrl.controller('checkboxCtrl', function ($scope) {

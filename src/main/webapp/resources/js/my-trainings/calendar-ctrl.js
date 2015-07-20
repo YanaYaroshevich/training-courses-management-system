@@ -1,3 +1,5 @@
+'use strict';
+
 var calendarCtrl = angular.module('calendarCtrl', []);
 
 calendarCtrl.controller('calendarCtrl', ['$scope', function($scope, moment) {
