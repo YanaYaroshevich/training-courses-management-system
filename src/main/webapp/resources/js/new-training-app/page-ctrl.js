@@ -3,8 +3,6 @@
 var pageCtrl = angular.module('pageCtrl', []);
 
 pageCtrl.controller('pageCtrl', function ($scope) {
-    var training = {};
-    
     /* Checkboxes Page 1 */
     
     $scope.checkboxTags = [
@@ -122,7 +120,7 @@ pageCtrl.controller('pageCtrl', function ($scope) {
     
     /* Text-fields Page 4 */
     
-    /* Date and time */
+    /* Date and time Page 5 */
     
     $scope.datepickers = [];
     
@@ -200,4 +198,46 @@ pageCtrl.controller('pageCtrl', function ($scope) {
     
     /* Final (on submit button) */
     
+    $scope.trainingCreation = function(){
+        var trainings = [];
+        
+        for (var i = 0; i < $scope.q; i++){
+        
+            var training = {};
+
+            /* Tags */
+            training.tags = [];
+            for (var i in $scope.checkboxTags){
+                if ($scope.checkboxTags[i].checked == true){
+                    training.tags.push($scope.checkboxTags[i].tag.substring(1));
+                }
+            }
+
+            if (training.tags.length == 0){
+                alert('You shoud choose at list one tag!');
+                return false;
+            }
+
+            /* Audience */
+            training.audience = [];
+            for (var i in $scope.checkboxAudiences){
+                if ($scope.checkboxAudiences[i].checked == true){
+                    training.audience.push($scope.checkboxAudiences[i].audience);
+                }
+            }
+
+            if (training.audience.length == 0){
+                alert('You shoud choose an audience for your training!');
+                return false;
+            }
+
+            /* Type of training */
+            training.type = ($scope.toShowType == 'Inner training ') ? false : true;
+            
+            /* Repetition frequency */
+            
+            trainings.push(training);
+        }
+        
+    }
 });
