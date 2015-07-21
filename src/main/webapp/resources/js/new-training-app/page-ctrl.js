@@ -1,9 +1,12 @@
+
 'use strict';
 
 var pageCtrl = angular.module('pageCtrl', []);
 
 pageCtrl.controller('pageCtrl', function ($scope) {
     /* Checkboxes Page 1 */
+    
+    window.scope = $scope;
     
     $scope.checkboxTags = [
 		{ type: 'checkbox', tag: '#Java', checked: false},
@@ -55,63 +58,45 @@ pageCtrl.controller('pageCtrl', function ($scope) {
     
     /* Dropdowns Page 2 */
     
-    $scope.toShowRepet = 'One-off ';
-    $scope.toShowType = 'Inner training ';
-    $scope.toShowLanguage = 'English ';
+    var repetitions = ['One-off ', 'Weekly ', 'Continuous '];
+    var types = ['Inner training ', 'Outer training '];
+    var languages = ['English ', 'Russian '];
     
-    $scope.whatChosen = 0;
+    $scope.toShowRepet = repetitions[0];
+    $scope.toShowType = types[0];
+    $scope.toShowLanguage = languages[0];
 
     $scope.chooseRepet = function(rep){
-        $scope.whatChosen = rep;
-        if (rep == 0){
-            $scope.toShowRepet = 'One-off ';
-        }
-    
-        else if (rep == 1){
-            $scope.toShowRepet = 'Weekly ';
-        }
-      
-        else{
-          $scope.toShowRepet = 'Continuous ';
-        }
+        $scope.toShowRepet = repetitions[rep];
     }
 
     $scope.chooseType = function(rep){
-        if (rep == 0)
-          $scope.toShowType = 'Inner training ';
-        else if (rep == 1)
-          $scope.toShowType = 'Outer training ';
-      }
+        $scope.toShowType = types[rep];
+    }
   
     $scope.chooseLanguage = function(rep){
-        if(rep == 0){
-            $scope.toShowLanguage = 'English ';
-        }
-        if(rep ==1){
-            $scope.toShowLanguage = 'Russian ';
-        }
-      }
+        $scope.toShowLanguage = languages[rep];
+    }
     
     /* Descriptions Page 3 */
     
-    $scope.q = 1;
+    $scope.qDescr = 1;
     $scope.descriptions = [];
     
     $scope.toShow = function(){     
-        if ($scope.toShowRepet.replace(/\s/g, '') == 'One-off' || $scope.toShowRepet.replace(/\s/g, '') == 'Weekly')
-            $scope.q = 1;
+        if ($scope.toShowRepet == 'One-off ' || $scope.toShowRepet == 'Weekly ')
+            $scope.qDescr = 1;
         else 
-            $scope.q = $scope.days;
+            $scope.qDescr = $scope.days;
     
-        $scope.descriptions = [];
-        for (var i = 0; i < $scope.q; i++) {
+        for (var i = 0; i < $scope.qDescr; i++) {
             $scope.descriptions.push('');
         }
         
-        $scope.qDays = ($scope.toShowRepet.replace(/\s/g, '') == 'Weekly') ? $scope.days : $scope.q;
+        $scope.qDates = ($scope.toShowRepet == 'Weekly ') ? $scope.days : $scope.qDescr;
         
-        for (var i = 0; i < $scope.qDays; i++){
-            $scope.datepickers[i] = {'dt' : null, 'mytime': new Date(), 'toShowWeekDay': 'Monday '};
+        for (var i = 0; i < $scope.qDates; i++){
+            $scope.datepickers[i] = {'dt' : null, 'time': new Date(), 'toShowWeekDay': 'Monday '};
         }
         
         $scope.today();
@@ -126,7 +111,7 @@ pageCtrl.controller('pageCtrl', function ($scope) {
     
     /* Date */
     $scope.today = function() {
-        for (var i = 0; i < $scope.qDays; i++)
+        for (var i = 0; i < $scope.qDates; i++)
             $scope.datepickers[i].dt = new Date();
     };
     
@@ -160,39 +145,15 @@ pageCtrl.controller('pageCtrl', function ($scope) {
     $scope.ismeridian = true;
    
     $scope.changed = function () {
-        $log.log('Time changed to: ' + $scope.mytime);
+        $log.log('Time changed to: ' + $scope.time);
     };
     
-    $scope.chooseWeekDay = function(rep, index){
-        $scope.whatChosen = rep;
-        if (rep == 0){
-            $scope.datepickers[index].toShowWeekDay = 'Monday ';
-        }
+    var days = ['Monday ', 'Tuesday ', 'Wednesday ', 'Thursday ', 'Friday ', 'Saturday ', 'Sunday '];
     
-        else if (rep == 1){
-            $scope.datepickers[index].toShowWeekDay = 'Tuesday ';
-        }
-      
-        else if (rep == 2){
-            $scope.datepickers[index].toShowWeekDay = 'Wednesday ';
-        }
-        
-        else if (rep == 3){
-            $scope.datepickers[index].toShowWeekDay = 'Thursday ';
-        }
-        
-        else if (rep == 4){
-            $scope.datepickers[index].toShowWeekDay = 'Friday ';
-        }
-        
-        else if (rep == 5){
-            $scope.datepickers[index].toShowWeekDay = 'Saturday ';
-        }
-        
-        else if (rep == 6){
-            $scope.datepickers[index].toShowWeekDay = 'Sunday ';
-        }
-      }
+    $scope.chooseWeekDay = function(rep, index){
+        $scope.datepickers[index].whatChosen = rep;
+        $scope.datepickers[index].toShowWeekDay = days[rep];
+    }
     
     $scope.toShow();
     
@@ -201,7 +162,7 @@ pageCtrl.controller('pageCtrl', function ($scope) {
     $scope.trainingCreation = function(){
         var trainings = [];
         
-        for (var i = 0; i < $scope.q; i++){
+        for (var i = 0; i < $scope.qDescr; i++){
         
             var training = {};
 
@@ -235,6 +196,59 @@ pageCtrl.controller('pageCtrl', function ($scope) {
             training.type = ($scope.toShowType == 'Inner training ') ? false : true;
             
             /* Repetition frequency */
+            training.regular = ($scope.toShowRepet == 'Weekly ') ? true : false;
+            
+            /* Training language */
+            training.language = $scope.toShowLanguage.substring(0, $scope.toShowLanguage.length - 1);
+            
+            /* Training name */
+            training.title = $scope.trainingName;
+            
+            if (training.title.length == 0){
+                alert('You should enter the name of your training!');
+                return false;
+            }
+            
+            if ($scope.toShowRepet == 'Continuous '){
+                training.title += (' #' + i);
+            }
+            
+            /* Training description */
+            training.description += $scope.descriptions[i];
+            
+            if (training.description.length == 0){
+                alert('You should enter the name of your training!');
+                return false;
+            }
+            
+            /* Training visitors */
+            training.visitors = $scope.guests;
+            
+            if (training.visitors.length == 0){
+                alert('You should enter quantity of guests!');
+                return false;
+            }
+            
+            /* Training duration */
+            training.duration = $scope.duration;
+            
+            if (training.duration.length == 0){
+                alert('You should enter quantity of guests!');
+                return false;
+            }
+            
+            /* Training dates */
+            training.days = '';
+            training.startTime = [];
+            training.rooms = [];
+            
+            if ($scope.toShowRepet == 'Weekly '){
+                for (var i = 0; i < $scope.datepickers.length; i++){
+                    training.startTime.push($scope.datepickers[i].time.toTimeString());
+                    //training.days += 
+                }
+                    
+            }
             
             
             
