@@ -1,10 +1,11 @@
 'use strict';
 
-var calendarCtrl = angular.module('calendarCtrl', []);
+var futureTabCtrl = angular.module('futureTabCtrl', []);
 
-calendarCtrl.controller('calendarCtrl', ['$scope', function($scope, moment) {
+futureTabCtrl.controller('futureTabCtrl', ['$scope', function($scope, moment) {
+    $scope.switcher = {view: "table"};
     var vm = this;
-    
+
     vm.calendarDay = new Date();
     vm.calendarView = 'month';
     vm.events = [
@@ -18,7 +19,7 @@ calendarCtrl.controller('calendarCtrl', ['$scope', function($scope, moment) {
             draggable: false,
             resizable: true,
             //recursOn: 'month',
-            //cssClass: 'css-class'            
+            //cssClass: 'css-class'
         }, {
             title: 'Back-end',
             type: 'info',
@@ -44,18 +45,18 @@ calendarCtrl.controller('calendarCtrl', ['$scope', function($scope, moment) {
         }
     ];
 
-    
+
     vm.eventClicked = function(event) {
-        
+
     };
 
     vm.eventEdited = function(event) {
-        
+
     };
 
     vm.eventDeleted = function(event) {
         var answer = confirm("Do you really want delete this training?");
-        
+
         if (answer) {
             var x = vm.events.indexOf(event);
             vm.events.splice(x, 1);
@@ -63,7 +64,7 @@ calendarCtrl.controller('calendarCtrl', ['$scope', function($scope, moment) {
     };
 
     vm.eventTimesChanged = function(event) {
-        
+
     };
 
     vm.toggle = function($event, field, event) {
