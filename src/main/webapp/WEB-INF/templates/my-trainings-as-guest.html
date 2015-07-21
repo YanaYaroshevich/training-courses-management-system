@@ -22,6 +22,9 @@
     <!-- Calendar CSS -->
     <link href="../../resources/vendors/css/angular-bootstrap-calendar.css" th:href="@{/resources/vendors/css/angular-bootstrap-calendar.css}" rel="stylesheet" type="text/css" />
 
+    <!-- ng-table CSS -->
+    <link href="../../resources/vendors/css/ng-table.css" th:href="@{/resources/vendors/css/ng-table.css}" />
+
     <!-- jQuery -->
     <script src="../../resources/vendors/js/jquery.js" th:src="@{/resources/vendors/js/jquery.js"></script>
 
@@ -34,6 +37,7 @@
     <script src="../../resources/vendors/js/moment.js" th:src="@{/resources/vendors/js/moment.js}"></script>
     <script src="../../resources/vendors/js/angular-bootstrap-calendar-tpls.js" th:src="@{/resources/vendors/js/angular-bootstrap-calendar-tpls.js}"></script>
     <script src="../../resources/vendors/js/ui-bootstrap-tpls-0.12.1.js" th:src="@{/resources/vendors/js/ui-bootstrap-tpls-0.12.1.js}"></script>
+    <script src="../../resources/vendors/js/ng-table.js" th:src="@{/resources/vendors/js/ng-table.js}"></script>
     <script src="../../resources/js/my-trainings-as-guest-app/app.js" th:src="@{/resources/js/my-trainings--as-guest-app/app.js}"></script>
     <script src="../../resources/js/my-trainings-as-guest-app/future-tab-ctrl.js" th:src="@{/resources/js/my-trainings-as-guest-app/future-tab-ctrl.js}"></script>
     <script src="../../resources/js/my-trainings-as-guest-app/history-tab-ctrl.js" th:src="@{/resources/js/my-trainings-as-guest-app/history-tab-ctrl.js}"></script>
@@ -200,70 +204,20 @@
                         </div>
                         <!-- /.row -->
 
-                        <!-- Trainings -->
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-hover ">
-                                <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Date</th>
-                                    <th>Location</th>
-                                    <th>Trainer name</th>
-                                    <th>Places occupied/all</th>
-                                    <th>Time</th>
-                                    <th>Tags</th>
+                            <table class="table table-bordered table-striped table-hover" ng-table>
+                                <tr ng-repeat="training in trainings">
+                                    <td data-title="'Title'">{{training.title}}</td>
+                                    <td data-title="'Date'">{{training.date}}</td>
+                                    <td data-title="'Location'">{{training.location}}</td>
+                                    <td data-title="'Trainer name'">{{training.trainerName}}</td>
+                                    <td data-title="'Places'">{{training.places}}</td>
+                                    <td data-title="'Tags'">
+                                        <span ng-repeat="tag in training.tags" class="label tags label-{{tag.color}}">{{tag.value}}</span>
+                                    </td>
                                 </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>JavaScript frameworks: Angular.js. How it works?</td>
-                                    <td>5 May 2015</td>
-                                    <td>Unit 243</td>
-                                    <td>Shchaurouski Slava</td>
-                                    <td>10/15</td>
-                                    <th>Time</th>
-                                    <td><span class="label label-info tags">#js</span><span class="label label-default tags">#angular.js</span><span class="label label-success tags">#front-end</span><span class="label label-warning tags">#framework</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Item 1</td>
-                                    <td>Item 2</td>
-                                    <td>Item 3</td>
-                                    <td>Item 4</td>
-                                    <td>Item 5</td>
-                                    <th>Time</th>
-                                    <td><span class="label label-default tags">#tag</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Item 1</td>
-                                    <td>Item 2</td>
-                                    <td>Item 3</td>
-                                    <td>Item 4</td>
-                                    <td>Item 5</td>
-                                    <th>Time</th>
-                                    <td><span class="label label-success tags">#tag</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Item 1</td>
-                                    <td>Item 2</td>
-                                    <td>Item 3</td>
-                                    <td>Item 4</td>
-                                    <td>Item 5</td>
-                                    <th>Time</th>
-                                    <td><span class="label label-warning tags">#tag</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Item 1</td>
-                                    <td>Item 2</td>
-                                    <td>Item 3</td>
-                                    <td>Item 4</td>
-                                    <td>Item 5</td>
-                                    <th>Time</th>
-                                    <td><span class="label label-danger tags">#tag</span></td>
-                                </tr>
-                                </tbody>
                             </table>
                         </div>
-                        <!-- /Trainings -->
                     </div>
                     <!-- /Table view -->
 

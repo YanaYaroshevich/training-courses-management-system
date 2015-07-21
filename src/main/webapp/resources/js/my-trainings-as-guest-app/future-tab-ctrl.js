@@ -1,50 +1,19 @@
 'use strict';
 
-var futureTabCtrl = angular.module('futureTabCtrl', []);
+var futureTabCtrl = angular.module('futureTabCtrl', ['ngTable']);
 
-futureTabCtrl.controller('futureTabCtrl', ['$scope', function($scope, moment) {
+futureTabCtrl.controller('futureTabCtrl', ['$scope', '$http', function($scope, $http, moment) {
     $scope.switcher = {view: "table"};
     var vm = this;
 
     vm.calendarDay = new Date();
     vm.calendarView = 'month';
-    vm.events = [
-        {
-            title: 'Front-end',
-            type: 'warning',
-            startsAt: new Date(2015,6,1,14),
-            endsAt: new Date(2015,6,5,16),
-            editable: true,
-            deletable: true,
-            draggable: false,
-            resizable: true,
-            //recursOn: 'month',
-            //cssClass: 'css-class'
-        }, {
-            title: 'Back-end',
-            type: 'info',
-            startsAt: new Date(2015,6,2,13),
-            endsAt: new Date(2015,6,6,14),
-            editable: true,
-            deletable: true,
-            draggable: false,
-            resizable: true,
-            //recursOn: 'month',
-            //cssClass: 'css-class'
-        }, {
-            title: 'SQL',
-            type: 'important',
-            startsAt: new Date(2015,6,3,12),
-            endsAt: new Date(2015,6,7,13),
-            editable: true,
-            deletable: true,
-            draggable: false,
-            resizable: true,
-            //recursOn: 'month',
-            //cssClass: 'css-class'
-        }
-    ];
 
+    $http.get('events.json').success (function(data, status, headers, config) {
+        vm.events = data;
+    }).error(function() {
+        vm.events = [];
+    });
 
     vm.eventClicked = function(event) {
 
@@ -72,4 +41,41 @@ futureTabCtrl.controller('futureTabCtrl', ['$scope', function($scope, moment) {
         $event.stopPropagation();
         event[field] = !event[field];
     };
+
+    $scope.tags = [{
+        value: '#js',
+        color: 'info'
+    }, {
+        value: '#java',
+        color: 'danger'
+    }, {
+        value: '#c++',
+        color: 'warning'
+    }];
+
+    $scope.trainings = [{
+        title: 'Front-end',
+        date: '5 May 2015',
+        location: '243',
+        trainerName: 'Shchaurouski',
+        places: '10/15',
+        time: '14:00',
+        tags: $scope.tags
+    }, {
+        title: 'Front-end',
+        date: '5 Jan 2015',
+        location: '243',
+        trainerName: 'Shchaurouski',
+        places: '10/15',
+        time: '14:00',
+        tags: $scope.tags
+    }, {
+        title: 'Front-end',
+        date: '5 June 2015',
+        location: '243',
+        trainerName: 'Shchaurouski',
+        places: '10/15',
+        time: '14:00',
+        tags: $scope.tags
+    }];
 }]);
