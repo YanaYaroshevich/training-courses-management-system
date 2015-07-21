@@ -25,10 +25,14 @@
     <mvc:resources mapping="/resources/js/**" location="/resources/js/" />
     <mvc:resources mapping="/resources/css/**" location="/resources/css/" />
 
+    <task:annotation-driven executor="executor" scheduler="scheduler"/>
+    <task:executor id="executor" pool-size="5"/>
+    <task:scheduler id="scheduler" pool-size="15"/>
+
     <bean id="xmlScheduledTasks" class="org.exadel.training.model.Schedule"/>
 
     <task:scheduled-tasks>
-        <task:scheduled ref="xmlScheduledTasks" method="xmlCronTask" cron="15 * * * * *"/>
+        <task:scheduled ref="xmlScheduledTasks" method="scheduleTask"/>
     </task:scheduled-tasks>
 
     <bean id="templateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
