@@ -1,12 +1,15 @@
 package org.exadel.training.service;
 
 
+import org.exadel.training.model.CurrentList;
 import org.exadel.training.model.Training;
+import org.exadel.training.service.EmailNotifierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.thymeleaf.context.Context;
 
 import javax.annotation.PostConstruct;
 import java.sql.Timestamp;
@@ -20,6 +23,19 @@ public class ScheduleNotificationService {
 
     @Autowired
     private TrainingService trainingService;
+
+    @Autowired
+    private EmailNotifierService emailNotification;
+
+    private void sendNotificationByEmail(Training training){
+        Set<CurrentList> currentList= training.getCurrentLists();
+        List<String> recipient = new ArrayList<>();
+        Context context = new Context();
+        for(CurrentList user:currentList){
+            recipient.add(user.getVisitor().getEmail());
+        }
+        emailNotification.sendEmailNotification(recipient.toArray(new String[recipient.size()]),"Notification about the training",context);
+    }
 
     @PostConstruct
     public void post(){
@@ -36,7 +52,7 @@ public class ScheduleNotificationService {
     }
 
     @Async
-    @Scheduled(cron = "*/50 * * * * *")
+    @Scheduled(cron = "* */5 * * * *")
     public void scheduleTask() {
         long date = new Date().getTime();
         String locale = "Europe/Minsk";
@@ -47,6 +63,7 @@ public class ScheduleNotificationService {
         while (!notificationPerDay.isEmpty() && (notificationPerDay.peek().getDate().getTime() < currentTimePlusDay.getTime())) {
             Training training = notificationPerDay.poll();
             if (training.getDate().getTime() > currentTime) {
+                sendNotificationByEmail(training);
                 System.out.println("Per Day: " + training.getDate());
             }
         }
