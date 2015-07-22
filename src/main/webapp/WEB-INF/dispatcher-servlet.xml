@@ -30,7 +30,7 @@
     <task:executor id="executor" pool-size="5"/>
     <task:scheduler id="scheduler" pool-size="15"/>
 
-    <bean id="xmlScheduledTasks" class="org.exadel.training.model.Schedule"/>
+    <bean id="xmlScheduledTasks" class="org.exadel.training.service.ScheduleNotificationService"/>
 
     <task:scheduled-tasks>
         <task:scheduled ref="xmlScheduledTasks" method="scheduleTask" cron="*/5 * * * * *"/>
