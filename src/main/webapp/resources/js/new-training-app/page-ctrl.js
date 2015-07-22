@@ -3,7 +3,7 @@
 
 var pageCtrl = angular.module('pageCtrl', []);
 
-pageCtrl.controller('pageCtrl', function ($scope) {
+pageCtrl.controller('pageCtrl', ['$scope', '$http', function ($scope, $http) {
     /* Checkboxes Page 1 */
     
     window.scope = $scope;
@@ -81,7 +81,6 @@ pageCtrl.controller('pageCtrl', function ($scope) {
     /* Descriptions Page 3 */
     
     $scope.qDescr = 1;
-    $scope.descriptions = [];
     
     $scope.toShow = function(){     
         if ($scope.toShowRepet == 'One-off ' || $scope.toShowRepet == 'Weekly ')
@@ -89,8 +88,9 @@ pageCtrl.controller('pageCtrl', function ($scope) {
         else 
             $scope.qDescr = $scope.days;
     
+        $scope.descriptions = [];
         for (var i = 0; i < $scope.qDescr; i++) {
-            $scope.descriptions.push('');
+            $scope.descriptions.push({text: ''});
         }
         
         $scope.qDates = ($scope.toShowRepet == 'Weekly ') ? $scope.days : $scope.qDescr;
@@ -102,8 +102,6 @@ pageCtrl.controller('pageCtrl', function ($scope) {
         $scope.today();
         return true;
     }
-    
-    /* Text-fields Page 4 */
     
     /* Date and time Page 5 */
     
@@ -142,7 +140,7 @@ pageCtrl.controller('pageCtrl', function ($scope) {
     $scope.hstep = 1;
     $scope.mstep = 10;
 
-    $scope.ismeridian = true;
+    $scope.ismeridian = false;
    
     $scope.changed = function () {
         $log.log('Time changed to: ' + $scope.time);
@@ -168,9 +166,9 @@ pageCtrl.controller('pageCtrl', function ($scope) {
 
             /* Tags */
             training.tags = [];
-            for (var i in $scope.checkboxTags){
-                if ($scope.checkboxTags[i].checked == true){
-                    training.tags.push($scope.checkboxTags[i].tag.substring(1));
+            for (var j in $scope.checkboxTags){
+                if ($scope.checkboxTags[j].checked == true){
+                    training.tags.push($scope.checkboxTags[j].tag.substring(1));
                 }
             }
 
@@ -181,9 +179,9 @@ pageCtrl.controller('pageCtrl', function ($scope) {
 
             /* Audience */
             training.audience = [];
-            for (var i in $scope.checkboxAudiences){
-                if ($scope.checkboxAudiences[i].checked == true){
-                    training.audience.push($scope.checkboxAudiences[i].audience);
+            for (var j in $scope.checkboxAudiences){
+                if ($scope.checkboxAudiences[j].checked == true){
+                    training.audience.push($scope.checkboxAudiences[j].audience);
                 }
             }
 
@@ -214,7 +212,7 @@ pageCtrl.controller('pageCtrl', function ($scope) {
             }
             
             /* Training description */
-            training.description += $scope.descriptions[i];
+            training.description = $scope.descriptions[i].text;
             
             if (training.description.length == 0){
                 alert('You should enter the name of your training!');
@@ -243,17 +241,26 @@ pageCtrl.controller('pageCtrl', function ($scope) {
             training.rooms = [];
             
             if ($scope.toShowRepet == 'Weekly '){
-                for (var i = 0; i < $scope.datepickers.length; i++){
-                    training.startTime.push($scope.datepickers[i].time.toTimeString());
-                    //training.days += 
+                for (var j = 0; j < $scope.datepickers.length; j++){
+                    training.startTime.push($scope.datepickers[j].time.toLocaleTimeString);
+                    training.days += days.indexOf($scope.datepickers[j].toShowWeekDay) + ' ';
+                    training.rooms += $scope.datepickers[j].room;
                 }
-                    
             }
             
-            
-            
+            var request = $http({
+                method: "POST",
+                url: "http://localhost:8080/new-training.html/training",
+                transformRequest: transformRequestAsFormPost,
+                data: training
+            });
+            // Store the data-dump of the FORM scope.
+            request.success(
+                function(html) {
+                    $scope.cfdump = html;
+                }
+            );
             trainings.push(training);
-        }
-        
+        } 
     }
-});
+}]);
