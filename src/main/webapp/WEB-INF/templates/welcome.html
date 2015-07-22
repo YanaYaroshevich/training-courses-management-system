@@ -60,8 +60,8 @@
 					</li>
 
 					<ul class="nav navbar-right top-nav language-panel">
-						<li><a class="lang" href = "all-trainings.html">En</a></li>
-						<li><a class="lang" href = "all-trainings.html">Ru</a></li>
+						<li><a class="lang" href = "welcome.html">En</a></li>
+						<li><a class="lang" href = "welcome.html">Ru</a></li>
 					</ul>
 				</ul>
 
@@ -70,19 +70,19 @@
 					<ul class="nav navbar-nav side-nav" id = "left-menu">
 						<li id = "alltrainings">
 							<a href="all-trainings.html" th:href="@{/training/all}">
-								<i class="fa fa-fw fa-circle"></i>
+								<i class="fa fa-fw fa-circle-o"></i>
 								All trainings
 							</a>
 						</li>
 						<li id = "mytrainings">
 							<a href="#" ng-click="isCollapsed2=!isCollapsed2">
-								<i class="fa fa-fw fa-circle"></i>
+								<i class="fa fa-fw fa-circle-o"></i>
 								My trainings
 								<i class="fa fa-fw fa-caret-down"></i>
 							</a>
 							<ul collapse="isCollapsed2">
 								<li>
-									<a href="../my-trainings/my-trainings.html">
+									<a href="my-trainings.html">
 										<i class="fa fa-fw fa-angle-right"></i>
 										As a trainer
 									</a>
@@ -97,19 +97,19 @@
 						</li>
 						<li id = "newtraining">
 							<a href="new-training.html" th:href="@{/training/new}">
-								<i class="fa fa-fw fa-circle"></i>
+								<i class="fa fa-fw fa-circle-o"></i>
 								Create new training
 							</a>
 						</li>
 						<li sec:authorize="hasRole('ROLE_ADMIN')" id = "newtrainer">
 							<a href="new-trainer.html">
-								<i class="fa fa-fw fa-circle"></i>
+								<i class="fa fa-fw fa-circle-o"></i>
 								Add new external trainer
 							</a>
 						</li>
 						<li sec:authorize="hasRole('ROLE_ADMIN')" id = "users">
 							<a href="users.html">
-								<i class="fa fa-fw fa-circle"></i>
+								<i class="fa fa-fw fa-circle-o"></i>
 								Users
 							</a>
 						</li>

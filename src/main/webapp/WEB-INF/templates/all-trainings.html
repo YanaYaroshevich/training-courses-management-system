@@ -84,7 +84,7 @@
 						</li>
 						<li id = "mytrainings">
 							<a href="#" ng-click="isCollapsed2=!isCollapsed2">
-								<i class="fa fa-fw fa-circle"></i>
+								<i class="fa fa-fw fa-circle-o"></i>
 								My trainings
 								<i class="fa fa-fw fa-caret-down"></i>
 							</a>
@@ -105,19 +105,19 @@
 						</li>
 						<li id = "newtraining">
 							<a href="new-training.html" th:href="@{/training/new}">
-								<i class="fa fa-fw fa-circle"></i>
+								<i class="fa fa-fw fa-circle-o"></i>
 								Create new training
 							</a>
 						</li>
 						<li sec:authorize="hasRole('ROLE_ADMIN')" id = "newtrainer">
 							<a href="new-trainer.html">
-								<i class="fa fa-fw fa-circle"></i>
+								<i class="fa fa-fw fa-circle-o"></i>
 								Add new external trainer
 							</a>
 						</li>
 						<li sec:authorize="hasRole('ROLE_ADMIN')" id = "users">
 							<a href="users.html">
-								<i class="fa fa-fw fa-circle"></i>
+								<i class="fa fa-fw fa-circle-o"></i>
 								Users
 							</a>
 						</li>
