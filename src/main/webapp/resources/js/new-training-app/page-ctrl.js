@@ -1,12 +1,11 @@
-
 'use strict';
 
 var pageCtrl = angular.module('pageCtrl', []);
 
 pageCtrl.controller('pageCtrl', ['$scope', '$http', function ($scope, $http) {
-    /* Checkboxes Page 1 */
+    $scope.submitLink = '#';
     
-    window.scope = $scope;
+    /* Checkboxes Page 1 */
     
     $scope.checkboxTags = [
 		{ type: 'checkbox', tag: '#Java', checked: false},
@@ -93,6 +92,7 @@ pageCtrl.controller('pageCtrl', ['$scope', '$http', function ($scope, $http) {
             $scope.descriptions.push({text: ''});
         }
         
+        $scope.datepickers = [];
         $scope.qDates = ($scope.toShowRepet == 'Weekly ') ? $scope.days : $scope.qDescr;
         
         for (var i = 0; i < $scope.qDates; i++){
@@ -141,10 +141,6 @@ pageCtrl.controller('pageCtrl', ['$scope', '$http', function ($scope, $http) {
     $scope.mstep = 10;
 
     $scope.ismeridian = false;
-   
-    $scope.changed = function () {
-        $log.log('Time changed to: ' + $scope.time);
-    };
     
     var days = ['Monday ', 'Tuesday ', 'Wednesday ', 'Thursday ', 'Friday ', 'Saturday ', 'Sunday '];
     
@@ -248,19 +244,15 @@ pageCtrl.controller('pageCtrl', ['$scope', '$http', function ($scope, $http) {
                 }
             }
             
-            var request = $http({
-                method: "POST",
-                url: "http://localhost:8080/new-training.html/training",
-                transformRequest: transformRequestAsFormPost,
-                data: training
-            });
-            // Store the data-dump of the FORM scope.
-            request.success(
-                function(html) {
-                    $scope.cfdump = html;
-                }
-            );
-            trainings.push(training);
+           var res = $http.post('/savecompany_json', training);
+		   res.success(function(data, status, headers, config) {
+               $scope.message = data;
+		   });
+		   res.error(function(data, status, headers, config) {
+               alert( "failure message: " + JSON.stringify({data: data}));
+           });	
+            
+           trainings.push(training);
         } 
     }
 }]);
