@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -54,7 +55,16 @@ public class TrainingServiceImpl implements TrainingService {
     public void removeTraining(Training training) {
         trainingDAO.removeTraining(training);
     }
-
+    @Override
+    public Comparator<Training> getComparatorByData(){
+        return new Comparator<Training>(){
+            @Override
+            public int compare(Training obj1, Training obj2)
+            {
+                return obj1.getDate().compareTo( obj2.getDate() );
+            }
+        };
+    }
     @Override
     @Transactional
     public Training getTrainingById(long id) {
