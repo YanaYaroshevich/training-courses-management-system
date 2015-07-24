@@ -1,8 +1,10 @@
 package org.exadel.training.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -14,11 +16,11 @@ public class User {
     private long userId;
 
     @NotEmpty
-    @Column(length = 25)
+    @Column(name = "first_name", length = 25)
     private String name;
 
     @NotEmpty
-    @Column(length = 25)
+    @Column(name = "last_name", length = 25)
     private String surname;
 
     @Column(unique = true)
@@ -30,17 +32,20 @@ public class User {
     @Column(name = "e_mail", unique = true)
     private String email;
 
+    @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_role",
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id")})
     private Set<Role> roles;
 
-    @OneToMany(mappedBy = "trainer", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
-    private Set<Training> trainings;
+    @JsonIgnore
+    @OneToMany(mappedBy = "trainer", cascade = CascadeType.ALL)
+    private Set<Training> leads = new HashSet<>(0);
 
-    @OneToMany(mappedBy = "visitor", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
-    private Set<CurrentList> currentLists;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "visitors")
+    private Set<Training> trainings;
 
     public long getUserId() {
         return userId;
@@ -102,11 +107,11 @@ public class User {
         this.trainings = trainings;
     }
 
-    public Set<CurrentList> getCurrentLists() {
-        return currentLists;
+    public Set<Training> getLeads() {
+        return leads;
     }
 
-    public void setCurrentLists(Set<CurrentList> currentLists) {
-        this.currentLists = currentLists;
+    public void setLeads(Set<Training> leads) {
+        this.leads = leads;
     }
 }
